@@ -1,0 +1,6 @@
+wradlib.clutter.filter_window_distance
+======================================
+
+.. currentmodule:: wradlib.clutter
+
+.. autofunction:: filter_window_distance

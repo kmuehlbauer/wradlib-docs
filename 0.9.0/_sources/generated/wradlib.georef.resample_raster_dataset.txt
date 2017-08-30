@@ -1,0 +1,6 @@
+wradlib.georef.resample_raster_dataset
+======================================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: resample_raster_dataset

@@ -1,0 +1,6 @@
+wradlib.util.filter_window_cartesian
+====================================
+
+.. currentmodule:: wradlib.util
+
+.. autofunction:: filter_window_cartesian

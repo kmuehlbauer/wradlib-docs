@@ -1,0 +1,6 @@
+wradlib\.io\.open\_shape
+========================
+
+.. currentmodule:: wradlib.io
+
+.. autofunction:: open_shape

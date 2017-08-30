@@ -1,0 +1,6 @@
+wradlib.adjust.AdjustMixed.__call__
+===================================
+
+.. currentmodule:: wradlib.adjust
+
+.. automethod:: AdjustMixed.__call__

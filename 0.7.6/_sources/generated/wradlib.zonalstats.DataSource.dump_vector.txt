@@ -1,0 +1,6 @@
+wradlib.zonalstats.DataSource.dump_vector
+=========================================
+
+.. currentmodule:: wradlib.zonalstats
+
+.. automethod:: DataSource.dump_vector

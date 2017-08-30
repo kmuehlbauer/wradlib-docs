@@ -1,0 +1,6 @@
+wradlib\.georef\.create\_osr
+============================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: create_osr

@@ -1,0 +1,6 @@
+wradlib\.io\.write\_raster\_dataset
+===================================
+
+.. currentmodule:: wradlib.io
+
+.. autofunction:: write_raster_dataset

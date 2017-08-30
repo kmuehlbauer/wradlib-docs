@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Attenuation correction &mdash; wradlib</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/wradlib.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="wradlib" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="RADOLAN" href="tutorial_radolan_format.html"/>
+        <link rel="prev" title="Plot data to curvelinear grid" href="tutorial_curvelinear_grids.html"/>
+    
+    <link href="_static/wradlib.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+  <a href="index.html" class="icon icon-home"> wradlib
+
+
+
+</a>
+
+
+
+  <div class="version">
+    
+    <button class="verbtn">0.7.6</button>
+    <div class="version-content">
+      
+        <a href="../latest/">latest</a>
+        <a href="../0.7.6/">0.7.6</a>
+        <a href="../0.7.0/">0.7.0</a>
+        <a href="../0.6.0/">0.6.0</a>
+    </div>
+  </div>
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_workflow.html">A typical workflow for radar-based rainfall estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_supported_formats.html">Supported radar data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_reading_dx.html">Read and plot DX radar data from DWD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_get_rainfall.html">Converting reflectivity to rainfall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_autoimages.html">Automate image generation with sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_curvelinear_grids.html">Plot data to curvelinear grid</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Attenuation correction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-example-event">The example event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hitschfeld-and-bordan">Hitschfeld and Bordan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#harrison">Harrison</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kraemer">Kraemer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modified-kraemer">Modified Kraemer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparison-of-all-methods">Comparison of all methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_radolan_format.html">RADOLAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_zonalstats.html">Zonalstats</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipes.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_setup.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">wradlib</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+      
+    <li>Attenuation correction</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial_attenuation.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="attenuation-correction">
+<h1>Attenuation correction<a class="headerlink" href="#attenuation-correction" title="Permalink to this headline">¶</a></h1>
+<p>Rainfall-induced attenuation is a major source of underestimation for radar-based precipitation estimation at C-band and X-band. Unconstrained forward gate-by-gate correction is known to be inherently unstable and thus not suited for unsupervised quality control procedures. Ideally, reference measurements (e.g. from microwave links) should be used to constrain gate-by-gate procedures. However, such attenuation references are usually not available. <em>wradlib</em> provides a pragmatic approach to constrain gate-by-gate correction procedures, inspired by the work of Kraemer2008 <a class="reference internal" href="zreferences.html#kraemer2008" id="id1">[13]</a>. It turned out that these procedures can effectively reduce the error introduced by attenuation, and, at the same time, minimize instability issues (Jacobi2015 <a class="reference internal" href="zreferences.html#jacobi2015" id="id2">[11]</a>).</p>
+<div class="section" id="the-example-event">
+<h2>The example event<a class="headerlink" href="#the-example-event" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s have a look at the situation in South-West Germany on June 2nd, 2008, at 16:55 UTC, as observed by the DWD C-band radar on mount Feldberg.
+The data can be read by the following lines and then visualized by <code class="docutils literal"><span class="pre">wradlib.vis.plot_ppi</span></code> (see image source code below):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;../../examples/data/raa00-dx_10908-0806021655-fbg---bin&quot;</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">attrs</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">readDX</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//tutorial_attenuation-1.py">Source code</a>, <a class="reference external" href=".//tutorial_attenuation-1.png">png</a>)</p>
+<div class="figure">
+<img alt="_images/tutorial_attenuation-1.png" src="_images/tutorial_attenuation-1.png" />
+</div>
+<p>We see a set of convective cells with high rainfall intensity in the NE-sector of the Feldberg radar. Let us examine the reflectivity profile along three beams which at azimuths 53-55 degree (as marked by the white line in the PPI above).</p>
+<p>(<a class="reference external" href=".//tutorial_attenuation-2.py">Source code</a>, <a class="reference external" href=".//tutorial_attenuation-2.png">png</a>)</p>
+<div class="figure">
+<img alt="_images/tutorial_attenuation-2.png" src="_images/tutorial_attenuation-2.png" />
+</div>
+<p>We will now examine the behaviour of different attenuation correction procedures. In the end, we will show a <a class="reference internal" href="#comparison-of-all-methods">Comparison of all methods</a></p>
+</div>
+<div class="section" id="hitschfeld-and-bordan">
+<h2>Hitschfeld and Bordan<a class="headerlink" href="#hitschfeld-and-bordan" title="Permalink to this headline">¶</a></h2>
+<p>First, we examine the behaviour of the &#8220;classical&#8221; unconstrained forward correction which is typically referred to Hitschfeld and Bordan <a class="reference internal" href="zreferences.html#hitschfeld1954" id="id3">[10]</a>, although Hitschfeld and Bordan themselves rejected this approach. The Path Integrated Attenuation (PIA) according to this approach can be obtained as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pia_hibo</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">atten</span><span class="o">.</span><span class="n">correctAttenuationHB</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">coefficients</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mf">8.e-5</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.731</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;warn&quot;</span><span class="p">,</span> <span class="n">thrs</span><span class="o">=</span><span class="mf">59.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the coefficients dictionary, we can pass the power law parameters of the A(Z) relation as well as the gate length (in km). If we pass &#8220;warn&#8221; as the mode argument, we will obtain a warning log in case the corrected reflectivity exceeds the value of argument <code class="docutils literal"><span class="pre">thrs</span></code> (dBZ).</p>
+<p>Plotting the result below the reflectivity profile, we obtain the following figure.</p>
+<p>(<a class="reference external" href=".//tutorial_attenuation-3.py">Source code</a>, <a class="reference external" href=".//tutorial_attenuation-3.png">png</a>)</p>
+<div class="figure">
+<img alt="_images/tutorial_attenuation-3.png" src="_images/tutorial_attenuation-3.png" />
+</div>
+<p>Apparently, slight differences in the reflectivity profile can cause a dramatic change in the behaviour. While at 54 and 55 degrees, the retrieval of PIA appears to be fairly stable, the profile of PIA for 53 degree demonstrates a case of instability.</p>
+</div>
+<div class="section" id="harrison">
+<h2>Harrison<a class="headerlink" href="#harrison" title="Permalink to this headline">¶</a></h2>
+<p>Harrison et al. <a class="reference internal" href="zreferences.html#harrison2002" id="id4">[9]</a> suggested to simply cap PIA in case it would cause a correction of rainfall intensity by more than a factor of two. Depending on the parameters of the Z(R) relationship, that would correpond to PIA values between 4 and 5 dB (4.8 dB if we assume exponent b=1.6).</p>
+<p>One way to implement this approach would be the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>pia_harrison = wradlib.atten.correctAttenuationHB(data, coefficients = dict(a=4.57e-5, b=0.731, l=1.0), mode=&quot;warn&quot;, thrs=59.)
+pia_harrison[pia_harrison4.8] = 4.8
+</pre></div>
+</div>
+<p>And the results would look like this:</p>
+<p>(<a class="reference external" href=".//tutorial_attenuation-4.py">Source code</a>, <a class="reference external" href=".//tutorial_attenuation-4.png">png</a>)</p>
+<div class="figure">
+<img alt="_images/tutorial_attenuation-4.png" src="_images/tutorial_attenuation-4.png" />
+</div>
+</div>
+<div class="section" id="kraemer">
+<h2>Kraemer<a class="headerlink" href="#kraemer" title="Permalink to this headline">¶</a></h2>
+<p>Kraemer <a class="reference internal" href="zreferences.html#kraemer2008" id="id5">[13]</a> suggested to iteratively determine the power law parameters of the A(Z). In particular, the power law coefficient is interatively decreased until the attenuation correction does not lead to reflectivity values above a given threshold (Kraemer suggested 59 dBZ). Using wradlib, this would be called by using the function <a class="reference internal" href="generated/wradlib.atten.correctAttenuationConstrained2.html"><em>wradlib.atten.correctAttenuationConstrained2</em></a> with a specific <code class="docutils literal"><span class="pre">constraints</span></code> argument:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pia_kraemer</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">atten</span><span class="o">.</span><span class="n">correctAttenuationConstrained2</span><span class="p">(</span>
+                                     <span class="n">data</span><span class="p">,</span>
+                                     <span class="n">a_max</span><span class="o">=</span><span class="mf">1.67e-4</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mf">2.33e-5</span><span class="p">,</span> <span class="n">n_a</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                                     <span class="n">b_max</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">b_min</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">n_b</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
+                                     <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">wrl</span><span class="o">.</span><span class="n">atten</span><span class="o">.</span><span class="n">constraint_dBZ</span><span class="p">],</span> <span class="n">constraint_args</span><span class="o">=</span><span class="p">[[</span><span class="mf">59.0</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>In brief, this call specifies ranges of the power parameters a and b of the A(Z) relation. Beginning from the maximum values (<code class="docutils literal"><span class="pre">a_max</span></code> and <code class="docutils literal"><span class="pre">b_max</span></code>), the function searches for values of <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> so that the corrected reflectivity will not exceed the dBZ constraint of 59 dBZ. Compared to the previous results, the corresponding profiles of PIA look like this:</p>
+<p>(<a class="reference external" href=".//tutorial_attenuation-5.py">Source code</a>, <a class="reference external" href=".//tutorial_attenuation-5.png">png</a>)</p>
+<div class="figure">
+<img alt="_images/tutorial_attenuation-5.png" src="_images/tutorial_attenuation-5.png" />
+</div>
+</div>
+<div class="section" id="modified-kraemer">
+<h2>Modified Kraemer<a class="headerlink" href="#modified-kraemer" title="Permalink to this headline">¶</a></h2>
+<p>The function <a class="reference internal" href="generated/wradlib.atten.correctAttenuationConstrained2.html"><em>wradlib.atten.correctAttenuationConstrained2</em></a> allows us to pass any kind of constraint function or lists of constraint functions via the argument <code class="docutils literal"><span class="pre">constraints</span></code>. The arguments of these functions are passed via a nested list as argument <code class="docutils literal"><span class="pre">constraint_args</span></code>. For example, Jacobi <a class="reference internal" href="zreferences.html#jacobi2015" id="id6">[11]</a> suggested to constrain <em>both</em> the corrected reflectivity (by a maximum of 59 dBZ) <em>and</em> the resulting path-intgrated attenuation PIA (by a maximun of 20 dB):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pia_mKraemer</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">atten</span><span class="o">.</span><span class="n">correctAttenuationConstrained2</span><span class="p">(</span>
+                                     <span class="n">data</span><span class="p">,</span>
+                                     <span class="n">a_max</span><span class="o">=</span><span class="mf">1.67e-4</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mf">2.33e-5</span><span class="p">,</span> <span class="n">n_a</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                                     <span class="n">b_max</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">b_min</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">n_b</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
+                                     <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">wradlib</span><span class="o">.</span><span class="n">atten</span><span class="o">.</span><span class="n">constraint_dBZ</span><span class="p">,</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">atten</span><span class="o">.</span><span class="n">constraint_pia</span><span class="p">],</span> <span class="n">constraint_args</span><span class="o">=</span><span class="p">[[</span><span class="mf">59.0</span><span class="p">],[</span><span class="mf">20.0</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//tutorial_attenuation-6.py">Source code</a>, <a class="reference external" href=".//tutorial_attenuation-6.png">png</a>)</p>
+<div class="figure">
+<img alt="_images/tutorial_attenuation-6.png" src="_images/tutorial_attenuation-6.png" />
+</div>
+</div>
+<div class="section" id="comparison-of-all-methods">
+<h2>Comparison of all methods<a class="headerlink" href="#comparison-of-all-methods" title="Permalink to this headline">¶</a></h2>
+<p>Plotting all of the above methods (<a class="reference internal" href="#hitschfeld-and-bordan">Hitschfeld and Bordan</a>, <a class="reference internal" href="#harrison">Harrison</a>, <a class="reference internal" href="#kraemer">Kraemer</a>, <a class="reference internal" href="#modified-kraemer">Modified Kraemer</a>) allows for a better comparison of their behaviour. Please refer to Jacobi <a class="reference internal" href="zreferences.html#jacobi2015" id="id7">[11]</a> for an in-depth discussion of this example.</p>
+<p>(<a class="reference external" href=".//tutorial_attenuation-7.py">Source code</a>, <a class="reference external" href=".//tutorial_attenuation-7.png">png</a>)</p>
+<div class="figure">
+<img alt="_images/tutorial_attenuation-7.png" src="_images/tutorial_attenuation-7.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_radolan_format.html" class="btn btn-neutral float-right" title="RADOLAN" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_curvelinear_grids.html" class="btn btn-neutral" title="Plot data to curvelinear grid" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016, wradlib developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.7.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

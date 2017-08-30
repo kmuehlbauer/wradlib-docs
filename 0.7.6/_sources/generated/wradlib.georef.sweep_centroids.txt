@@ -1,0 +1,6 @@
+wradlib.georef.sweep_centroids
+==============================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: sweep_centroids

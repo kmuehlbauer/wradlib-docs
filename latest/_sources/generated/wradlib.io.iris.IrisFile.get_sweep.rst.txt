@@ -1,0 +1,6 @@
+wradlib\.io\.iris\.IrisFile\.get\_sweep
+=======================================
+
+.. currentmodule:: wradlib.io.iris
+
+.. automethod:: IrisFile.get_sweep

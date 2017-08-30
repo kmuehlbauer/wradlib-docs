@@ -1,0 +1,6 @@
+wradlib\.io\.iris\.IrisFile\.get\_compression\_code
+===================================================
+
+.. currentmodule:: wradlib.io.iris
+
+.. automethod:: IrisFile.get_compression_code

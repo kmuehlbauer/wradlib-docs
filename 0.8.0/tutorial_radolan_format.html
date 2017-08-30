@@ -1,0 +1,998 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RADOLAN &mdash; wradlib</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/wradlib.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="wradlib" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="Zonalstats" href="tutorial_zonalstats.html"/>
+        <link rel="prev" title="Attenuation correction" href="tutorial_attenuation.html"/>
+    
+    <link href="_static/wradlib.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+  <a href="index.html" class="icon icon-home"> wradlib
+
+
+
+</a>
+
+
+
+  <div class="version">
+    
+    <button class="verbtn">0.8.0</button>
+    <div class="version-content">
+      
+        <a href="../latest/">latest</a>
+        <a href="../0.8.0/">0.8.0</a>
+        <a href="../0.7.6/">0.7.6</a>
+        <a href="../0.7.0/">0.7.0</a>
+        <a href="../0.6.0/">0.6.0</a>
+    </div>
+  </div>
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_workflow.html">A typical workflow for radar-based rainfall estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_supported_formats.html">Supported radar data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_reading_dx.html">Read and plot DX radar data from DWD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_get_rainfall.html">Converting reflectivity to rainfall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_autoimages.html">Automate image generation with sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_curvelinear_grids.html">Plot data to curvelinear grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_attenuation.html">Attenuation correction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">RADOLAN</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#radolan-binary-data-format">RADOLAN binary data format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#radolan-composite-products">RADOLAN composite products</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#national-composits">National Composits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#central-european-composits">Central European Composits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#radolan-grid">RADOLAN Grid</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polar-stereographic-projection">Polar Stereographic Projection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inverse-polar-stereographic-projection">Inverse Polar Stereographic Projection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#radolan-projection-in-various-standard-formats">Radolan-projection in various standard formats</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dwd-radar-network">DWD-Radar Network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#radolan-composite-header">RADOLAN composite header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#radolan-projection">RADOLAN Projection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#radolan-products-showcase">RADOLAN products showcase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#digital-elevation-model-underlay">Digital Elevation Model Underlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#river-network-overlay">River Network Overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rain-gauges-overlay">Rain Gauges Overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#export-to-google-maps">Export to Google Maps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#export-to-netcdf">Export to NetCDF</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_zonalstats.html">Zonalstats</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipes.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_setup.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">wradlib</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+      
+    <li>RADOLAN</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial_radolan_format.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="radolan">
+<h1>RADOLAN<a class="headerlink" href="#radolan" title="Permalink to this headline">¶</a></h1>
+<p>RADOLAN is abbreviated from the german <strong>RA</strong>dar-<strong>O</strong>n<strong>L</strong>ine-<strong>AN</strong>eichung, which means Radar-Online-Adjustment.</p>
+<p>Using it&#8217;s <a class="reference external" href="https://www.dwd.de/SharedDocs/broschueren/DE/presse/Wetterradar_PDF.pdf?__blob=publicationFile&amp;v=5">network of 17 weather radar</a> the German Weather Service provides many products for high resolution precipitation analysis and forecast. A comprehensive product list can be found in chapter <a class="reference internal" href="#radolan-composite-products"><span>RADOLAN composite products</span></a>.</p>
+<p>These composite products are distributed in the <a class="reference internal" href="#radolan-binary-data-format"><span>RADOLAN binary data format</span></a> with an ASCII header. All composites are available in <a class="reference internal" href="#polar-stereo-projection"><span>Polar Stereographic Projection</span></a> which will be discussed in the chapter <a class="reference internal" href="#radolan-grid"><span>RADOLAN Grid</span></a>.</p>
+<div class="section" id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>All RADOLAN composite products can be read by the following function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read_RADOLAN_composite</span><span class="p">(</span><span class="s2">&quot;mydrive:/path/to/my/file/filename&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal"><span class="pre">data</span></code> is a two dimensional integer or float array of shape (number of rows, number of columns). <code class="docutils literal"><span class="pre">metadata</span></code> is a dictionary which provides metadata from the files header section, e.g. using the keys <em>producttype</em>, <em>datetime</em>, <em>intervalseconds</em>, <em>nodataflag</em>.</p>
+<p>The <a class="reference internal" href="#radolan-grid"><span>RADOLAN Grid</span></a> coordinates can be calculated with <a class="reference internal" href="generated/wradlib.georef.get_radolan_grid.html#wradlib.georef.get_radolan_grid" title="wradlib.georef.get_radolan_grid"><code class="xref py py-func docutils literal"><span class="pre">wradlib.georef.get_radolan_grid</span></code></a>.</p>
+<p>In <a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/radolan_quickstart_example.py">the radolan_quickstart_example.py script</a> the RW-product is shown in the RADOLAN <a class="reference internal" href="#polar-stereo-projection"><span>Polar Stereographic Projection</span></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># import section</span>
+<span class="kn">import</span> <span class="nn">wradlib</span> <span class="kn">as</span> <span class="nn">wrl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">pl</span>
+
+<span class="c1"># load radolan files</span>
+<span class="n">rw_filename</span> <span class="o">=</span> <span class="s1">&#39;../../examples/data/radolan/raa01-rw_10000-1408102050-dwd---bin.gz&#39;</span>
+<span class="n">rwdata</span><span class="p">,</span> <span class="n">rwattrs</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_RADOLAN_composite</span><span class="p">(</span><span class="n">rw_filename</span><span class="p">)</span>
+
+<span class="c1"># print the available attributes</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;RW Attributes:&quot;</span><span class="p">,</span> <span class="n">rwattrs</span><span class="p">)</span>
+
+<span class="c1"># mask invalid values</span>
+<span class="n">sec</span> <span class="o">=</span> <span class="n">rwattrs</span><span class="p">[</span><span class="s1">&#39;secondary&#39;</span><span class="p">]</span>
+<span class="n">rwdata</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">sec</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span>
+<span class="n">rwdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_equal</span><span class="p">(</span><span class="n">rwdata</span><span class="p">,</span> <span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+
+<span class="c1"># get coordinates</span>
+<span class="n">radolan_grid_xy</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">georef</span><span class="o">.</span><span class="n">get_radolan_grid</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span><span class="mi">900</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">radolan_grid_xy</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">radolan_grid_xy</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># create quick plot with colorbar and title</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rwdata</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;spectral&quot;</span><span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">shrink</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;mm/h&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;RADOLAN RW Product Polar Stereo </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">rwattrs</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href=".//tutorial_radolan_format-1.py">Source code</a>, <a class="reference external" href=".//tutorial_radolan_format-1.png">png</a>)</p>
+<div class="figure">
+<img alt="_images/tutorial_radolan_format-1.png" src="_images/tutorial_radolan_format-1.png" />
+</div>
+<p>A much more comprehensive section using several RADOLAN composites is shown in chapter <a class="reference internal" href="#radolan-examples"><span>Examples</span></a>.</p>
+</div>
+<div class="section" id="radolan-binary-data-format">
+<span id="id1"></span><h2>RADOLAN binary data format<a class="headerlink" href="#radolan-binary-data-format" title="Permalink to this headline">¶</a></h2>
+<p>The radolan composite files consists of an ascii header containing all needed information to decode the following binary data block. <em>wradlib</em> provides <a class="reference internal" href="generated/wradlib.io.read_RADOLAN_composite.html#wradlib.io.read_RADOLAN_composite" title="wradlib.io.read_RADOLAN_composite"><code class="xref py py-func docutils literal"><span class="pre">wradlib.io.read_RADOLAN_composite</span></code></a> to read the data.</p>
+<p>The function <code class="xref py py-func docutils literal"><span class="pre">wradlib.io.parse_DWD_quant_composite_header</span></code> takes care of correctly decoding the ascii header. All available header information is transferred into the metadata dictionary.</p>
+</div>
+<div class="section" id="radolan-composite-products">
+<span id="id2"></span><h2>RADOLAN composite products<a class="headerlink" href="#radolan-composite-products" title="Permalink to this headline">¶</a></h2>
+<p>A few products including RW and SF are available free of charge at this <a class="reference external" href="ftp://ftp-cdc.dwd.de/pub/CDC/grids_germany/">DWD FTP Server</a>. A full list of RADOLAN products can be found in the <a class="reference external" href="https://www.dwd.de/DE/leistungen/radolan/radolan_info/radolan_radvor_op_komposit_format_pdf.pdf?__blob=publicationFile&amp;v=5">DWD RADOLAN/RADVOR-OP Kompositformat</a>.</p>
+<p>Currently, most of the RADOLAN composites have a spatial resolution of 1km x 1km, with the <a class="reference internal" href="#national-composits"><span>National Composits</span></a> (R- and S-series) being 900 x 900 km grids, and the <a class="reference internal" href="#european-composits"><span>Central European Composits</span></a> 1500 x 1400 km grids. The polar-stereographic projection is described in the chapter <a class="reference internal" href="#radolan-grid"><span>RADOLAN Grid</span></a>.</p>
+<div class="section" id="national-composits">
+<span id="id3"></span><h3>National Composits<a class="headerlink" href="#national-composits" title="Permalink to this headline">¶</a></h3>
+<p>The common national products (across Germany) with a range of 900 km by 900 km are presented in the following table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="9%" />
+<col width="9%" />
+<col width="30%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ID</th>
+<th class="head">INT</th>
+<th class="head">avail</th>
+<th class="head">Filename</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>RX</td>
+<td>5 min</td>
+<td>5 min</td>
+<td><div class="first last line-block">
+<div class="line">raa01-rx_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">original radardata in qualitative</div>
+<div class="line">RVP6-units (1 byte coded)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>RZ</td>
+<td>5 min</td>
+<td>5 min</td>
+<td><div class="first last line-block">
+<div class="line">raa01-rz_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">radardata after correction of PBB</div>
+<div class="line">converted to rainrate with</div>
+<div class="line">improved Z-R-relation</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>RY</td>
+<td>5 min</td>
+<td>5 min</td>
+<td><div class="first last line-block">
+<div class="line">raa01-ry_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">radardata after correction with</div>
+<div class="line">Quality-composit (QY)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>RH</td>
+<td>1 h</td>
+<td>5 min</td>
+<td><div class="first last line-block">
+<div class="line">raa01-rh_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">1 h summation of RZ-composit</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>RB</td>
+<td>1 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-rb_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">1 h summation with preadjustment</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>RW</td>
+<td>1 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-rw_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">1 h summation with standard</div>
+<div class="line">adjustment &#8220;best of two&#8221;</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>RL</td>
+<td>1 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-rl_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">1 h summation with adjustment</div>
+<div class="line">by Merging</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>RU</td>
+<td>1 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-ru_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">1 h summation with standard and</div>
+<div class="line">merging adjustment &#8220;best of three&#8221;</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>SQ</td>
+<td>6 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-sq_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">6 h summation of RW</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>SH</td>
+<td>12 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-sh_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">12 h summation of RW</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>SF</td>
+<td>24 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-sf_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">24 h summation of RW</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>W1</td>
+<td>7 d</td>
+<td>05:50</td>
+<td>&nbsp;</td>
+<td><div class="first last line-block">
+<div class="line">7 d summation of RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>W2</td>
+<td>14 d</td>
+<td>05:50</td>
+<td>&nbsp;</td>
+<td><div class="first last line-block">
+<div class="line">14 d summation of RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>W3</td>
+<td>21 d</td>
+<td>05:50</td>
+<td>&nbsp;</td>
+<td><div class="first last line-block">
+<div class="line">21 d summation of RW</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>W4</td>
+<td>30 d</td>
+<td>05:50</td>
+<td>&nbsp;</td>
+<td><div class="first last line-block">
+<div class="line">30 d summation of RW</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="central-european-composits">
+<span id="european-composits"></span><h3>Central European Composits<a class="headerlink" href="#central-european-composits" title="Permalink to this headline">¶</a></h3>
+<p>The common central european products with a range of 1500 km by 1400 km are presented in the following table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="9%" />
+<col width="9%" />
+<col width="30%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ID</th>
+<th class="head">INT</th>
+<th class="head">avail</th>
+<th class="head">Filename</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>EX</td>
+<td>5 min</td>
+<td>5 min</td>
+<td><div class="first last line-block">
+<div class="line">raa01-ex_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">analogue RX</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>EZ</td>
+<td>5 min</td>
+<td>5 min</td>
+<td><div class="first last line-block">
+<div class="line">raa01-ez_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">analogue RZ</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>EY</td>
+<td>5 min</td>
+<td>5 min</td>
+<td><div class="first last line-block">
+<div class="line">raa01-ey_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">analogue EY after correction with</div>
+<div class="line">Quality-composit</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>EH</td>
+<td>1 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-eh_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">analogue RH  (no preadjustment)</div>
+<div class="line">1 h summation of EY-composite</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>EB</td>
+<td>1 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-eb_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">analogue RB  (with preadjustment)</div>
+<div class="line">1 h summation</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>EW</td>
+<td>1 h</td>
+<td>hh:50</td>
+<td><div class="first last line-block">
+<div class="line">raa01-ew_10000-</div>
+<div class="line">YYMMDDhhmm-dwd&#8212;bin</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">analogue RW  (full adjustment)</div>
+<div class="line">1 h summation</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="radolan-grid">
+<span id="id4"></span><h2>RADOLAN Grid<a class="headerlink" href="#radolan-grid" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="polar-stereographic-projection">
+<span id="polar-stereo-projection"></span><h3>Polar Stereographic Projection<a class="headerlink" href="#polar-stereographic-projection" title="Permalink to this headline">¶</a></h3>
+<p>The projected composite raster is equidistant with a grid-spacing of 1.0 km in most cases. There are composites which have 2.0 km grid-spacing (e.g. PC).</p>
+<p>There are three different grid sizes, the well-known 900 rows by 900 columns (normal), 1500 rows by 1400 columns (extended, european) and 460 rows by 460 columns (small).</p>
+<p>Common to all is that the plane of projection intersects the earth sphere at <span class="math">\(\phi_0\)</span> = 60.0 <span class="math">\(^{\circ}\)</span> N. The cartesian co-ordinate system is aligned parallel to the <span class="math">\(\lambda_0\)</span> = 10.0 <span class="math">\(^{\circ}\)</span> E meridian.</p>
+<p>The reference point ( <span class="math">\(\lambda_m\)</span> , <span class="math">\(\phi_m\)</span> ) is 9.0 <span class="math">\(^{\circ}\)</span> E and 51.0 <span class="math">\(^{\circ}\)</span> N, which is the center of the two smaller grids. The extended grid has an offset in respect to this reference point of 350km by 150km.</p>
+<p>The earth as sphere with an radius of 6370.04 km is used for all calculations.</p>
+<p>With formulas (1), (2) and (3) the geographic reference points (lambda, phi) can be converted to projected cartesian coordinates. The calculated (x y) is the distance vector to the origign of the cartesian coordinate system (north pole).</p>
+<div class="math" id="equation-f1">
+<span class="eqno">(1)</span>\[x = R * M(\phi) * cos(\phi) * sin(\lambda - \lambda_0)\]</div>
+<div class="math" id="equation-f2">
+<span class="eqno">(2)</span>\[y = -R * M(\phi) * cos(\phi) * cos(\lambda - \lambda_0)\]</div>
+<div class="math" id="equation-f3">
+<span class="eqno">(3)</span>\[M(\phi) =  \frac {1 + sin(\phi_0)} {1 + sin(\phi)}\]</div>
+<p>Assumed the point (10.0 <span class="math">\(^{\circ}\)</span> E, 90.0 <span class="math">\(^{\circ}\)</span> N) is defined as coordinate system origin. Then all ccordinates can be calculated with the known grid-spacing d as:</p>
+<div class="math" id="equation-f4">
+<span class="eqno">(4)</span>\[x = x_0 + d * (j - j_0)\]</div>
+<div class="math" id="equation-f5">
+<span class="eqno">(5)</span>\[y = y_0 + d * (i - i_0)\]</div>
+<p>with i, j as cartesian indices.</p>
+<p><em>wradlib</em> provides the convenience function <a class="reference internal" href="generated/wradlib.georef.get_radolan_grid.html#wradlib.georef.get_radolan_grid" title="wradlib.georef.get_radolan_grid"><code class="xref py py-func docutils literal"><span class="pre">wradlib.georef.get_radolan_grid</span></code></a> which returns the radolan grid for further processing. It takes <cite>nrows</cite> and <cite>ncols</cite> as parameters and returns the projected cartesian coordinates or the wgs84 coordinates (keyword arg wgs84=True) as numpy ndarray (nrows x ncols x 2).</p>
+</div>
+<div class="section" id="inverse-polar-stereographic-projection">
+<h3>Inverse Polar Stereographic Projection<a class="headerlink" href="#inverse-polar-stereographic-projection" title="Permalink to this headline">¶</a></h3>
+<p>The geographic coordinates of specific datapoints can be calculated by using the cartesian coordinates (x,y) and the following formulas:</p>
+<div class="math" id="equation-f6">
+<span class="eqno">(6)</span>\[\lambda = \arctan\left(\frac {-x} {y}\right) + \lambda_0\]</div>
+<div class="math" id="equation-f7">
+<span class="eqno">(7)</span>\[\phi = \arcsin\left(\frac {R^2 * \left(1 + \sin\phi_0\right)^2 - \left(x^2 + y^2\right)} {R^2 * \left(1 + \sin\phi_0\right)^2 + \left(x^2 + y^2\right)}\right)\]</div>
+<p>Within <em>wradlib</em> the <cite>georef.reproject</cite> function can be used to convert the radolan grid data from xy-space to lonlat-space and back.</p>
+</div>
+<div class="section" id="radolan-projection-in-various-standard-formats">
+<h3>Radolan-projection in various standard formats<a class="headerlink" href="#radolan-projection-in-various-standard-formats" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="wkt-string">
+<h4>WKT-String<a class="headerlink" href="#wkt-string" title="Permalink to this headline">¶</a></h4>
+<p>The German Weather Service provides a <a class="reference external" href="https://kunden.dwd.de/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.web.demo.SRSDescriptionPage&amp;code=EPSG:1000001">WKT-string</a>. This WKT (well known text) is used to create the osr-object representation of the radolan projection.</p>
+<p>For the scale_factor the intersection of the projection plane with the earth sphere at 60.0 <span class="math">\(^{\circ}\)</span> N has to be taken into account:</p>
+<div class="math" id="equation-f8">
+<span class="eqno">(8)</span>\[scale\_factor = \frac {1 + \sin\left(60.^{\circ}\right)} {1 + \sin\left(90.^{\circ}\right)} = 0.93301270189\]</div>
+<p>Also, the PROJECTION[&#8220;Stereographic_North_Pole&#8221;] isn&#8217;t known within GDAL/OSR. It has to be changed to the known PROJECTION[&#8220;polar_stereographic&#8221;].</p>
+<p>Finally we yield the Radolan Projection as WKT-string:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">PROJCS</span><span class="p">[</span><span class="s2">&quot;Radolan projection&quot;</span><span class="p">,</span>
+  <span class="n">GEOGCS</span><span class="p">[</span><span class="s2">&quot;Radolan Coordinate System&quot;</span><span class="p">,</span>
+    <span class="n">DATUM</span><span class="p">[</span><span class="s2">&quot;Radolan Kugel&quot;</span><span class="p">,</span>
+      <span class="n">SPHEROID</span><span class="p">[</span><span class="s2">&quot;Erdkugel&quot;</span><span class="p">,</span> <span class="mf">6370040.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]],</span>
+    <span class="n">PRIMEM</span><span class="p">[</span><span class="s2">&quot;Greenwich&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;8901&quot;</span><span class="p">]],</span>
+    <span class="n">UNIT</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="mf">0.017453292519943295</span><span class="p">],</span>
+    <span class="n">AXIS</span><span class="p">[</span><span class="s2">&quot;Longitude&quot;</span><span class="p">,</span> <span class="n">EAST</span><span class="p">],</span>
+    <span class="n">AXIS</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">,</span> <span class="n">NORTH</span><span class="p">]],</span>
+  <span class="n">PROJECTION</span><span class="p">[</span><span class="s2">&quot;polar_stereographic&quot;</span><span class="p">],</span>
+  <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;central_meridian&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">],</span>
+  <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;Standard_Parallel_1&quot;</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">],</span>
+  <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;scale_factor&quot;</span><span class="p">,</span> <span class="mf">0.93301270189</span><span class="p">],</span>
+  <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;false_easting&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+  <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;false_northing&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+  <span class="n">UNIT</span><span class="p">[</span><span class="s2">&quot;m*1000.0&quot;</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">],</span>
+  <span class="n">AXIS</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">EAST</span><span class="p">],</span>
+  <span class="n">AXIS</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">NORTH</span><span class="p">],</span>
+  <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;1000001&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>This WKT-string is used within <em>wradlib</em> to create the osr-object by using the helper-function <a class="reference internal" href="generated/wradlib.georef.create_osr.html#wradlib.georef.create_osr" title="wradlib.georef.create_osr"><code class="xref py py-func docutils literal"><span class="pre">wradlib.georef.create_osr</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">proj_stereo</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">create_osr</span><span class="p">(</span><span class="s2">&quot;dwd-radolan&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="proj-4">
+<h4>PROJ.4<a class="headerlink" href="#proj-4" title="Permalink to this headline">¶</a></h4>
+<p>Using the above WKT-String the PROJ.4 representation can be derived as:</p>
+<p>PROJ.4-String:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">+</span><span class="n">proj</span><span class="o">=</span><span class="n">stere</span> <span class="o">+</span><span class="n">lat_0</span><span class="o">=</span><span class="mi">90</span> <span class="o">+</span><span class="n">lat_ts</span><span class="o">=</span><span class="mi">90</span> <span class="o">+</span><span class="n">lon_0</span><span class="o">=</span><span class="mi">10</span> <span class="o">+</span><span class="n">k</span><span class="o">=</span><span class="mf">0.93301270189</span>
+<span class="o">+</span><span class="n">x_0</span><span class="o">=</span><span class="mi">0</span> <span class="o">+</span><span class="n">y_0</span><span class="o">=</span><span class="mi">0</span> <span class="o">+</span><span class="n">a</span><span class="o">=</span><span class="mi">6370040</span> <span class="o">+</span><span class="n">b</span><span class="o">=</span><span class="mi">6370040</span> <span class="o">+</span><span class="n">to_meter</span><span class="o">=</span><span class="mi">1000</span> <span class="o">+</span><span class="n">no_defs</span>
+</pre></div>
+</div>
+<p>This PROJ.4-string can be used to create the osr-object by using the helper-functions <a class="reference internal" href="generated/wradlib.georef.proj4_to_osr.html#wradlib.georef.proj4_to_osr" title="wradlib.georef.proj4_to_osr"><code class="xref py py-func docutils literal"><span class="pre">wradlib.georef.proj4_to_osr</span></code></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># create radolan projection osr object</span>
+<span class="n">dwd_string</span> <span class="o">=</span>  <span class="s1">&#39;+proj=stere +lat_0=90 +lat_ts=90 +lon_0=10 +k=0.93301270189 +x_0=0 +y_0=0 +a=6370040 +b=6370040 +to_meter=1000 +no_defs&#39;</span>
+<span class="n">proj_stereo</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">proj4_to_osr</span><span class="p">(</span><span class="n">dwd_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="examples">
+<span id="radolan-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>In this section examples are provided to get familiar with several RADOLAN products.</p>
+<p>Attention is paid to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#ex-radolan-radarloc"><span>DWD-Radar Network</span></a></li>
+<li><a class="reference internal" href="#ex-radolan-header"><span>RADOLAN composite header</span></a></li>
+<li><a class="reference internal" href="#ex-radolan-projection"><span>RADOLAN Projection</span></a></li>
+<li><a class="reference internal" href="#ex-radolan-products"><span>RADOLAN products showcase</span></a></li>
+<li><a class="reference internal" href="#ex-radolan-underlay"><span>Digital Elevation Model Underlay</span></a></li>
+<li><a class="reference internal" href="#ex-radolan-overlay"><span>River Network Overlay</span></a></li>
+<li><a class="reference internal" href="#ex-radolan-gauges"><span>Rain Gauges Overlay</span></a></li>
+<li><a class="reference internal" href="#ex-radolan-google"><span>Export to Google Maps</span></a></li>
+<li><a class="reference internal" href="#ex-radolan-netcdf"><span>Export to NetCDF</span></a></li>
+</ul>
+<div class="section" id="dwd-radar-network">
+<span id="ex-radolan-radarloc"></span><h3>DWD-Radar Network<a class="headerlink" href="#dwd-radar-network" title="Permalink to this headline">¶</a></h3>
+<p>In <a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/radolan_radarloc_example.py">the radolan_radarloc_example.py script</a> the RW-product is shown in WGS84 and the RADOLAN <a class="reference internal" href="#polar-stereo-projection"><span>Polar Stereographic Projection</span></a>. All for the compositing process used radars are extracted from the metadata and plotted with their respective maximum range rings and location information.</p>
+<p>(<a class="reference external" href=".//tutorial_radolan_format-2.py">Source code</a>)</p>
+<div class="figure" id="id7">
+<img alt="_images/tutorial_radolan_format-2_00.png" src="_images/tutorial_radolan_format-2_00.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href=".//tutorial_radolan_format-2_00.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id8">
+<img alt="_images/tutorial_radolan_format-2_01.png" src="_images/tutorial_radolan_format-2_01.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href=".//tutorial_radolan_format-2_01.png">png</a>)</span></p>
+</div>
+</div>
+<div class="section" id="radolan-composite-header">
+<span id="ex-radolan-header"></span><h3>RADOLAN composite header<a class="headerlink" href="#radolan-composite-header" title="Permalink to this headline">¶</a></h3>
+<p>In <a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/radolan_header_example.py">the radolan_header_example.py script</a> we extract and show header information from several RADOLAN-products. First we load data and metadata of RX,EX,RW and SF-products:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wradlib</span> <span class="kn">as</span> <span class="nn">wrl</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># load radolan file</span>
+<span class="n">rx_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="s1">&#39;data/radolan/raa01-rx_10000-1408102050-dwd---bin.gz&#39;</span>
+<span class="n">ex_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="s1">&#39;data/radolan/raa01-ex_10000-1408102050-dwd---bin.gz&#39;</span>
+<span class="n">rw_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="s1">&#39;data/radolan/raa01-rw_10000-1408102050-dwd---bin.gz&#39;</span>
+<span class="n">sf_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="s1">&#39;data/radolan/raa01-sf_10000-1408102050-dwd---bin.gz&#39;</span>
+
+<span class="n">rxdata</span><span class="p">,</span> <span class="n">rxattrs</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_RADOLAN_composite</span><span class="p">(</span><span class="n">rx_filename</span><span class="p">)</span>
+<span class="n">exdata</span><span class="p">,</span> <span class="n">exattrs</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_RADOLAN_composite</span><span class="p">(</span><span class="n">ex_filename</span><span class="p">)</span>
+<span class="n">rwdata</span><span class="p">,</span> <span class="n">rwattrs</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_RADOLAN_composite</span><span class="p">(</span><span class="n">rw_filename</span><span class="p">)</span>
+<span class="n">sfdata</span><span class="p">,</span> <span class="n">sfattrs</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_RADOLAN_composite</span><span class="p">(</span><span class="n">sf_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then, we print the RX metadata:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># print the available attributes
+print(&quot;RX Attributes:&quot;)
+for key, value in rxattrs.iteritems():
+    print(key +&#39;:&#39;, value)
+
+RX Attributes:
+(&#39;maxrange:&#39;, &#39;150 km&#39;)
+(&#39;radarlocations:&#39;, [&#39;boo&#39;, &#39;ros&#39;, &#39;emd&#39;, &#39;hnr&#39;, &#39;umd&#39;, &#39;pro&#39;, &#39;ess&#39;, &#39;asd&#39;, &#39;neu&#39;, &#39;nhb&#39;, &#39;oft&#39;, &#39;tur&#39;, &#39;isn&#39;, &#39;fbg&#39;, &#39;mem&#39;, &#39;bdy&#39;])
+(&#39;nrow:&#39;, 900)
+(&#39;intervalseconds:&#39;, 300)
+(&#39;cluttermask:&#39;, array([], dtype=int64))
+(&#39;precision:&#39;, 1.0)
+(&#39;datetime:&#39;, datetime.datetime(2014, 8, 10, 20, 50))
+(&#39;ncol:&#39;, 900)
+(&#39;radolanversion:&#39;, &#39;2.13.1&#39;)
+(&#39;producttype:&#39;, &#39;RX&#39;)
+(&#39;nodataflag:&#39;, -9999)
+(&#39;datasize:&#39;, 810000)
+(&#39;radarid:&#39;, &#39;10000&#39;)
+</pre></div>
+</div>
+<p>Then, we print the EX metadata:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>print(&quot;----------------------------------------------------------------&quot;)
+# print the available attributes
+print(&quot;EX Attributes:&quot;)
+for key, value in exattrs.iteritems():
+    print(key +&#39;:&#39;, value)
+
+EX Attributes:
+(&#39;maxrange:&#39;, &#39;128 km&#39;)
+(&#39;radarlocations:&#39;, [&#39;sin&#39;, &#39;rom&#39;, &#39;vir&#39;, &#39;bor&#39;, &#39;nld&#39;, &#39;zav&#39;, &#39;wid&#39;, &#39;sui&#39;, &#39;abv&#39;, &#39;ave&#39;, &#39;tra&#39;, &#39;arc&#39;, &#39;ncy&#39;, &#39;bgs&#39;, &#39;bla&#39;, &#39;sly&#39;, &#39;sem&#39;, &#39;boo&#39;, &#39;ros&#39;, &#39;emd&#39;, &#39;hnr&#39;, &#39;umd&#39;, &#39;pro&#39;, &#39;ess&#39;, &#39;asd&#39;, &#39;neu&#39;, &#39;nhb&#39;, &#39;oft&#39;, &#39;tur&#39;, &#39;isn&#39;, &#39;fbg&#39;, &#39;mem&#39;, &#39;bdy&#39;, &#39;ska&#39;])
+(&#39;nrow:&#39;, 1500)
+(&#39;intervalseconds:&#39;, 300)
+(&#39;cluttermask:&#39;, array([], dtype=int64))
+(&#39;precision:&#39;, 1.0)
+(&#39;datetime:&#39;, datetime.datetime(2014, 8, 10, 20, 50))
+(&#39;ncol:&#39;, 1400)
+(&#39;radolanversion:&#39;, &#39;2.13.1&#39;)
+(&#39;producttype:&#39;, &#39;EX&#39;)
+(&#39;nodataflag:&#39;, -9999)
+(&#39;datasize:&#39;, 2100000)
+(&#39;radarid:&#39;, &#39;10000&#39;)
+</pre></div>
+</div>
+<p>Then, we print the RW metadata:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># print the available attributes
+print(&quot;RW Attributes:&quot;)
+for key, value in rwattrs.iteritems():
+    print(key +&#39;:&#39;, value)
+
+RW Attributes:
+(&#39;maxrange:&#39;, &#39;150 km&#39;)
+(&#39;radarlocations:&#39;, [&#39;boo&#39;, &#39;ros&#39;, &#39;emd&#39;, &#39;hnr&#39;, &#39;umd&#39;, &#39;pro&#39;, &#39;ess&#39;, &#39;asd&#39;, &#39;neu&#39;, &#39;nhb&#39;, &#39;oft&#39;, &#39;tur&#39;, &#39;isn&#39;, &#39;fbg&#39;, &#39;mem&#39;])
+(&#39;nrow:&#39;, 900)
+(&#39;intervalseconds:&#39;, 3600)
+(&#39;cluttermask:&#39;, array([], dtype=int64))
+(&#39;precision:&#39;, 0.1)
+(&#39;datetime:&#39;, datetime.datetime(2014, 8, 10, 20, 50))
+(&#39;ncol:&#39;, 900)
+(&#39;radolanversion:&#39;, &#39;2.13.1&#39;)
+(&#39;producttype:&#39;, &#39;RW&#39;)
+(&#39;nodataflag:&#39;, -9999)
+(&#39;datasize:&#39;, 1620000)
+(&#39;radarid:&#39;, &#39;10000&#39;)
+(&#39;secondary:&#39;, array([   799,    800,    801, ..., 806263, 806264, 807163]))
+</pre></div>
+</div>
+<p>Finally, we print the SF metadata:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># print the available attributes
+print(&quot;SF Attributes:&quot;)
+for key, value in sfattrs.iteritems():
+    print(key +&#39;:&#39;, value)
+
+SF Attributes:
+(&#39;maxrange:&#39;, &#39;150 km&#39;)
+(&#39;radarlocations:&#39;, [&#39;boo&#39;, &#39;ros&#39;, &#39;emd&#39;, &#39;hnr&#39;, &#39;umd&#39;, &#39;pro&#39;, &#39;ess&#39;, &#39;asd&#39;, &#39;neu&#39;, &#39;nhb&#39;, &#39;oft&#39;, &#39;tur&#39;, &#39;isn&#39;, &#39;fbg&#39;, &#39;mem&#39;])
+(&#39;nrow:&#39;, 900)
+(&#39;intervalseconds:&#39;, 86400)
+(&#39;cluttermask:&#39;, array([], dtype=int64))
+(&#39;precision:&#39;, 0.1)
+(&#39;datetime:&#39;, datetime.datetime(2014, 8, 10, 20, 50))
+(&#39;ncol:&#39;, 900)
+(&#39;radolanversion:&#39;, &#39;2.13.1&#39;)
+(&#39;producttype:&#39;, &#39;SF&#39;)
+(&#39;nodataflag:&#39;, -9999)
+(&#39;datasize:&#39;, 1620000)
+(&#39;radarid:&#39;, &#39;10000&#39;)
+(&#39;secondary:&#39;, array([   188,    189,    190, ..., 809566, 809567, 809568]))
+</pre></div>
+</div>
+<p>The metadata information reflects the different measurement time intervals, the different radar stations involved and differences in serveral other header information.</p>
+</div>
+<div class="section" id="radolan-projection">
+<span id="ex-radolan-projection"></span><h3>RADOLAN Projection<a class="headerlink" href="#radolan-projection" title="Permalink to this headline">¶</a></h3>
+<p>In <a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/radolan_projection_example.py">the radolan_projection_example.py script</a> we calculate the RADOLAN Grid and print their bounding box coordinates in different projections:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wradlib</span> <span class="kn">as</span> <span class="nn">wrl</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">osr</span>
+
+<span class="c1"># create radolan grid coordinates</span>
+<span class="n">radolan_grid_xy</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">georef</span><span class="o">.</span><span class="n">get_radolan_grid</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span><span class="mi">900</span><span class="p">)</span>
+
+<span class="c1"># create radolan projection osr object</span>
+<span class="n">proj_stereo</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">georef</span><span class="o">.</span><span class="n">create_osr</span><span class="p">(</span><span class="s2">&quot;dwd-radolan&quot;</span><span class="p">)</span>
+
+<span class="c1"># create wgs84 projection osr object</span>
+<span class="n">proj_wgs</span> <span class="o">=</span> <span class="n">osr</span><span class="o">.</span><span class="n">SpatialReference</span><span class="p">()</span>
+<span class="n">proj_wgs</span><span class="o">.</span><span class="n">ImportFromEPSG</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
+
+<span class="c1"># create Gauss Krueger zone 3 projection osr object</span>
+<span class="n">proj_gk3</span> <span class="o">=</span> <span class="n">osr</span><span class="o">.</span><span class="n">SpatialReference</span><span class="p">()</span>
+<span class="n">proj_gk3</span><span class="o">.</span><span class="n">ImportFromEPSG</span><span class="p">(</span><span class="mi">31467</span><span class="p">)</span>
+
+<span class="c1"># transform radolan polar stereographic projection to wgs84 and then to gk3</span>
+<span class="n">radolan_grid_ll</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">georef</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="n">radolan_grid_xy</span><span class="p">,</span> <span class="n">projection_source</span><span class="o">=</span><span class="n">proj_stereo</span><span class="p">,</span> <span class="n">projection_target</span><span class="o">=</span><span class="n">proj_wgs</span><span class="p">)</span>
+<span class="n">radolan_grid_gk</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">georef</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="n">radolan_grid_ll</span><span class="p">,</span> <span class="n">projection_source</span><span class="o">=</span><span class="n">proj_wgs</span><span class="p">,</span> <span class="n">projection_target</span><span class="o">=</span><span class="n">proj_gk3</span><span class="p">)</span>
+
+<span class="c1"># get coordinates for easy access</span>
+<span class="n">lon_wgs0</span> <span class="o">=</span> <span class="n">radolan_grid_ll</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lat_wgs0</span> <span class="o">=</span> <span class="n">radolan_grid_ll</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">x_gk3</span> <span class="o">=</span> <span class="n">radolan_grid_gk</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y_gk3</span> <span class="o">=</span> <span class="n">radolan_grid_gk</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">x_rad</span> <span class="o">=</span> <span class="n">radolan_grid_xy</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y_rad</span> <span class="o">=</span> <span class="n">radolan_grid_xy</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Then, we print the RADOLAN x,y Grid Coordinates:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;source radolan x,y-coordinates&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">u&quot;       {0}      {1} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;x [km]&#39;</span><span class="p">,</span> <span class="s1">&#39;y [km]&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ll: {:10.4f} {:10.3f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_rad</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_rad</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;lr: {:10.4f} {:10.3f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_rad</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_rad</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ur: {:10.4f} {:10.3f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_rad</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_rad</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ul: {:10.4f} {:10.3f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_rad</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_rad</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>source radolan x,y-coordinates
+       x [km]      y [km]
+ll:  -523.4622  -4658.645
+lr:   376.5378  -4658.645
+ur:   376.5378  -3758.645
+ul:  -523.4622  -3758.645
+</pre></div>
+</div>
+<p>Then, we print the RADOLAN lon,lat Grid Coordinates:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;transformed radolan lonlat-coordinates&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">u&quot;       {0}   {1} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">u&#39;lon [</span><span class="se">\N{DEGREE SIGN}</span><span class="s1">E]&#39;</span><span class="p">,</span> <span class="s1">u&#39;lat [</span><span class="se">\N{DEGREE SIGN}</span><span class="s1">N]&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ll: {:10.4f} {:10.4f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lon_wgs0</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">lat_wgs0</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;lr: {:10.4f} {:10.4f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lon_wgs0</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">lat_wgs0</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ur: {:10.4f} {:10.4f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lon_wgs0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">lat_wgs0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ul: {:10.4f} {:10.4f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lon_wgs0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">lat_wgs0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>transformed radolan lonlat-coordinates
+       lon [°E]   lat [°N]
+ll:     3.5889    46.9526
+lr:    14.6209    47.0705
+ur:    15.7208    54.7405
+ul:     2.0715    54.5877
+</pre></div>
+</div>
+<p>Finally, we print the RADOLAN gk3 Grid Coordinates:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;transformed radolan gk3-coordinates&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">u&quot;     {0}     {1} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;easting [m]&#39;</span><span class="p">,</span> <span class="s1">&#39;northing [m]&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ll: {:10.0f} {:10.0f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_gk3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_gk3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;lr: {:10.0f} {:10.0f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_gk3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_gk3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ur: {:10.0f} {:10.0f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_gk3</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_gk3</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;ul: {:10.0f} {:10.0f} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x_gk3</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_gk3</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>transformed radolan gk3-coordinates
+     easting [m]  northing [m]
+ll:    3088210      5215765
+lr:    3926971      5230000
+ur:    3932597      6088666
+ul:    3052511      6072990
+</pre></div>
+</div>
+</div>
+<div class="section" id="radolan-products-showcase">
+<span id="ex-radolan-products"></span><h3>RADOLAN products showcase<a class="headerlink" href="#radolan-products-showcase" title="Permalink to this headline">¶</a></h3>
+<p>In <a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/radolan_products_example.py">the radolan_products_example.py script</a> we show several RADOLAN products:</p>
+<p>(<a class="reference external" href=".//tutorial_radolan_format-3.py">Source code</a>)</p>
+<div class="figure" id="id9">
+<img alt="_images/tutorial_radolan_format-3_00.png" src="_images/tutorial_radolan_format-3_00.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href=".//tutorial_radolan_format-3_00.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id10">
+<img alt="_images/tutorial_radolan_format-3_01.png" src="_images/tutorial_radolan_format-3_01.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href=".//tutorial_radolan_format-3_01.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id11">
+<img alt="_images/tutorial_radolan_format-3_02.png" src="_images/tutorial_radolan_format-3_02.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href=".//tutorial_radolan_format-3_02.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id12">
+<img alt="_images/tutorial_radolan_format-3_03.png" src="_images/tutorial_radolan_format-3_03.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href=".//tutorial_radolan_format-3_03.png">png</a>)</span></p>
+</div>
+<p>This example will be extended if more products are available.</p>
+</div>
+<div class="section" id="digital-elevation-model-underlay">
+<span id="ex-radolan-underlay"></span><h3>Digital Elevation Model Underlay<a class="headerlink" href="#digital-elevation-model-underlay" title="Permalink to this headline">¶</a></h3>
+<p>Example follows soon...</p>
+</div>
+<div class="section" id="river-network-overlay">
+<span id="ex-radolan-overlay"></span><h3>River Network Overlay<a class="headerlink" href="#river-network-overlay" title="Permalink to this headline">¶</a></h3>
+<p>Example follows soon...</p>
+</div>
+<div class="section" id="rain-gauges-overlay">
+<span id="ex-radolan-gauges"></span><h3>Rain Gauges Overlay<a class="headerlink" href="#rain-gauges-overlay" title="Permalink to this headline">¶</a></h3>
+<p>Example follows soon...</p>
+</div>
+<div class="section" id="export-to-google-maps">
+<span id="ex-radolan-google"></span><h3>Export to Google Maps<a class="headerlink" href="#export-to-google-maps" title="Permalink to this headline">¶</a></h3>
+<p>Example follows soon...</p>
+</div>
+<div class="section" id="export-to-netcdf">
+<span id="ex-radolan-netcdf"></span><h3>Export to NetCDF<a class="headerlink" href="#export-to-netcdf" title="Permalink to this headline">¶</a></h3>
+<p>Example follows soon...</p>
+</div>
+</div>
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial was prepared with material from the <a class="reference external" href="http://www.dwd.de/DE/leistungen/radolan/radolan_info/radolan_radvor_op_komposit_format_pdf.pdf?__blob=publicationFile&amp;v=5">DWD RADOLAN/RADVOR-OP Kompositformat</a>.
+We also wish to thank Elmar Weigl, German Weather Service, for providing the extensive set of example data and his valuable information about the RADOLAN products.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_zonalstats.html" class="btn btn-neutral float-right" title="Zonalstats" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_attenuation.html" class="btn btn-neutral" title="Attenuation correction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016, wradlib developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.8.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

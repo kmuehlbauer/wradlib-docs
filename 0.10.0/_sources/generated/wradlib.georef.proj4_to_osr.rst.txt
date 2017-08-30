@@ -1,0 +1,6 @@
+wradlib\.georef\.proj4\_to\_osr
+===============================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: proj4_to_osr

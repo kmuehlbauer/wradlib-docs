@@ -1,0 +1,6 @@
+wradlib\.io\.read\_raster\_data
+===============================
+
+.. currentmodule:: wradlib.io
+
+.. autofunction:: read_raster_data

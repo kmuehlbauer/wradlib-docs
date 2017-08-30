@@ -1,0 +1,6 @@
+wradlib.adjust.AdjustNone.__call__
+==================================
+
+.. currentmodule:: wradlib.adjust
+
+.. automethod:: AdjustNone.__call__

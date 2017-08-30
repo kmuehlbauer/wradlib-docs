@@ -1,0 +1,6 @@
+wradlib.ipol.ExternalDriftKriging.__call__
+==========================================
+
+.. currentmodule:: wradlib.ipol
+
+.. automethod:: ExternalDriftKriging.__call__

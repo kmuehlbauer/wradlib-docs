@@ -1,0 +1,6 @@
+wradlib\.io\.read\_RADOLAN\_composite
+=====================================
+
+.. currentmodule:: wradlib.io
+
+.. autofunction:: read_RADOLAN_composite

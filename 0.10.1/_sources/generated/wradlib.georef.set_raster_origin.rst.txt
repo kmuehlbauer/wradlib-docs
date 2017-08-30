@@ -1,0 +1,6 @@
+wradlib\.georef\.set\_raster\_origin
+====================================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: set_raster_origin

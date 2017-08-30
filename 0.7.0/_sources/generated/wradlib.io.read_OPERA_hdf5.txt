@@ -1,0 +1,6 @@
+wradlib.io.read_OPERA_hdf5
+==========================
+
+.. currentmodule:: wradlib.io
+
+.. autofunction:: read_OPERA_hdf5

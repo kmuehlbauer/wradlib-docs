@@ -1,0 +1,6 @@
+wradlib\.georef\.read\_gdal\_values
+===================================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: read_gdal_values

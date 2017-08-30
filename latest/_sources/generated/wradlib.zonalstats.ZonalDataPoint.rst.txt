@@ -1,0 +1,25 @@
+wradlib\.zonalstats\.ZonalDataPoint
+===================================
+
+.. currentmodule:: wradlib.zonalstats
+
+.. autoclass:: ZonalDataPoint
+
+   
+
+.. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+
+.. autosummary::
+   :toctree:
+
+
+   ~ZonalDataPoint.dump_vector
+   ~ZonalDataPoint.get_isec
+   ~ZonalDataPoint.get_source_index
+   ~ZonalDataPoint.load_vector
+
+
+
+
+   
+

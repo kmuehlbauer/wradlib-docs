@@ -1,0 +1,6 @@
+wradlib.vis.plot_max_plan_and_vert
+==================================
+
+.. currentmodule:: wradlib.vis
+
+.. autofunction:: plot_max_plan_and_vert

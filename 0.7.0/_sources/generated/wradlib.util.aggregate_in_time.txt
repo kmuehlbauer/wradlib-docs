@@ -1,0 +1,6 @@
+wradlib.util.aggregate_in_time
+==============================
+
+.. currentmodule:: wradlib.util
+
+.. autofunction:: aggregate_in_time

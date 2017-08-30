@@ -1,0 +1,6 @@
+wradlib.zonalstats.DataSource.dump_raster
+=========================================
+
+.. currentmodule:: wradlib.zonalstats
+
+.. automethod:: DataSource.dump_raster

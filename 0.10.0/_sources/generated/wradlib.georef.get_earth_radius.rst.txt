@@ -1,0 +1,6 @@
+wradlib\.georef\.get\_earth\_radius
+===================================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: get_earth_radius

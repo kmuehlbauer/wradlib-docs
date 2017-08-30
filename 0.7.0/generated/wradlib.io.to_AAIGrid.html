@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>wradlib.io.to_AAIGrid &mdash; wradlib</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/wradlib.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="wradlib" href="../index.html"/>
+        <link rel="up" title="Raw Data I/O" href="../io.html"/>
+        <link rel="next" title="wradlib.io.to_GeoTIFF" href="wradlib.io.to_GeoTIFF.html"/>
+        <link rel="prev" title="wradlib.io.read_safnwc" href="wradlib.io.read_safnwc.html"/>
+    <link href="../_static/wradlib.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+  <a href="../index.html" class="icon icon-home"> wradlib
+
+
+
+</a>
+
+
+  <div class="version">
+    <button class="verbtn">0.7.0</button>
+    <div class="version-content">
+      <a href="../latest/">latest</a>
+      <a href="../0.7.0/">0.7.0</a>
+      <a href="../0.6.0/">0.6.0</a>
+    </div>
+  </div>
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes.html">Recipes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Library Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../io.html">Raw Data I/O</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.readDX.html">wradlib.io.readDX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.writePolygon2Text.html">wradlib.io.writePolygon2Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.read_EDGE_netcdf.html">wradlib.io.read_EDGE_netcdf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.read_generic_hdf5.html">wradlib.io.read_generic_hdf5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.read_OPERA_hdf5.html">wradlib.io.read_OPERA_hdf5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.read_GAMIC_hdf5.html">wradlib.io.read_GAMIC_hdf5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.read_RADOLAN_composite.html">wradlib.io.read_RADOLAN_composite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.read_Rainbow.html">wradlib.io.read_Rainbow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.read_safnwc.html">wradlib.io.read_safnwc</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">wradlib.io.to_AAIGrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.to_GeoTIFF.html">wradlib.io.to_GeoTIFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.read_raster_data.html">wradlib.io.read_raster_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wradlib.io.open_shape.html">wradlib.io.open_shape</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../trafo.html">Data Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zr.html">Z-R Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../georef.html">Georeferencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipol.html">Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qual.html">Data Quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp.html">Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clutter.html">Clutter Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dp.html">Dual-Pol and Differential Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fill.html">Filling Missing Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vpr.html">Vertical Profile of Reflectivity (VPR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../atten.html">Attenuation Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adjust.html">Gage adjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../verify.html">Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vis.html">Visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zonalstats.html">Zonal Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html">Utility functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_setup.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zreferences.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">wradlib</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../reference.html">Library Reference</a> &raquo;</li>
+      
+          <li><a href="../io.html">Raw Data I/O</a> &raquo;</li>
+      
+    <li>wradlib.io.to_AAIGrid</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/generated/wradlib.io.to_AAIGrid.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="wradlib-io-to-aaigrid">
+<h1>wradlib.io.to_AAIGrid<a class="headerlink" href="#wradlib-io-to-aaigrid" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="wradlib.io.to_AAIGrid">
+<code class="descclassname">wradlib.io.</code><code class="descname">to_AAIGrid</code><span class="sig-paren">(</span><em>fpath</em>, <em>data</em>, <em>xllcorner</em>, <em>yllcorner</em>, <em>cellsize</em>, <em>nodata=-9999</em>, <em>proj=None</em>, <em>fmt='%.2f'</em>, <em>to_esri=True</em><span class="sig-paren">)</span><a class="headerlink" href="#wradlib.io.to_AAIGrid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a cartesian grid to an Arc/Info ASCII grid file.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.6.0.</span></p>
+</div>
+<p>The function writes a text file to <code class="docutils literal"><span class="pre">fpath</span></code> that contains the header info and
+the grid data passed with the argument <code class="docutils literal"><span class="pre">data</span></code>. For details on ESRI grids
+(or Arc/Info ASCII grids) see e.g. <a class="reference external" href="http://en.wikipedia.org/wiki/Esri_grid">http://en.wikipedia.org/wiki/Esri_grid</a>.
+This should work for most GIS software systems (tested for QGIS and ESRI ArcGIS).</p>
+<p>In case a GDAL SpatialReference object (argument <code class="docutils literal"><span class="pre">proj</span></code>) is passed,
+the function will also try to write an accompanying projection (<code class="docutils literal"><span class="pre">.prj</span></code>)
+file that has the same file name, but a different extension.</p>
+<p>Please refer to <a class="reference external" href="http://wradlib.bitbucket.org/georef.html">http://wradlib.bitbucket.org/georef.html</a> to see how to
+create SpatialReference objects from e.g. <a class="reference internal" href="wradlib.georef.epsg_to_osr.html"><em>EPSG codes</em></a>,
+<a class="reference internal" href="wradlib.georef.proj4_to_osr.html"><em>proj4 strings</em></a>,
+or <a class="reference internal" href="wradlib.georef.wkt_to_osr.html"><em>WKT strings</em></a>. Other projections
+are addressed by the <a class="reference internal" href="wradlib.georef.create_osr.html"><em>create_osr function</em></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fpath</strong> (<em>string (a file path) - must have a &quot;.txt&quot; or &quot;.asc&quot; extension.</em>) &#8211; </li>
+<li><strong>data</strong> (<em>two dimensional numpy array of type integer or float</em>) &#8211; </li>
+<li><strong>xllcorner</strong> (<em>float (x coordinate of the lower left corner of the grid)</em>) &#8211; </li>
+<li><strong>yllcorner</strong> (<em>float (y coordinate of the lower left corner of the grid)</em>) &#8211; </li>
+<li><strong>cellsize</strong> (<em>float (size of the grid cells - needs to be consistent with proj)</em>) &#8211; </li>
+<li><strong>nodata</strong> (<em>float (no data flag)</em>) &#8211; </li>
+<li><strong>proj</strong> (<em>a SpatialReference of class 'osr.SpatialReference'</em>) &#8211; </li>
+<li><strong>fmt</strong> (<em>format string</em>) &#8211; </li>
+<li><strong>to_esri</strong> (<em>Boolean (set True if the prj file should be made ESRI compatible)</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Has been tested with ESRI ArcGIS 9.3 and QGIS 2.8.</p>
+<p class="rubric">Examples</p>
+<p>See <a class="reference download internal" href="../_downloads/gis_export_example.py"><code class="xref download docutils literal"><span class="pre">gis_export_example.py</span> <span class="pre">script</span></code></a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#-------------------------------------------------------------------------------</span>
+<span class="c1"># Name:         raster_to_gis_example</span>
+<span class="c1"># Author:       Maik Heistermann</span>
+<span class="c1"># Licence:      The MIT License</span>
+<span class="c1">#-------------------------------------------------------------------------------</span>
+
+<span class="kn">import</span> <span class="nn">wradlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">ex_grid_to_gis</span><span class="p">():</span>
+    
+    <span class="c1"># We will export this RADOLAN dataset to a GIS compatible format</span>
+    <span class="n">wdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/data/radolan/&#39;</span>
+    <span class="n">fpath</span> <span class="o">=</span> <span class="n">wdir</span> <span class="o">+</span> <span class="s1">&#39;raa01-sf_10000-1408102050-dwd---bin.gz&#39;</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_RADOLAN_composite</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
+    
+    <span class="c1"># This is the RADOLAN projection</span>
+    <span class="n">proj_osr</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">georef</span><span class="o">.</span><span class="n">create_osr</span><span class="p">(</span> <span class="s2">&quot;dwd-radolan&quot;</span> <span class="p">)</span>
+    
+    <span class="c1"># Get projected RADOLAN coordinates for corner definition</span>
+    <span class="n">xy</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">georef</span><span class="o">.</span><span class="n">get_radolan_grid</span><span class="p">(</span><span class="mi">900</span><span class="p">,</span><span class="mi">900</span><span class="p">)</span>
+    
+    <span class="c1"># Export to Arc/Info ASCII Grid format (aka ESRI grid)</span>
+    <span class="c1">#     It should be possible to import this to most conventional GIS software.</span>
+    <span class="n">wradlib</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">to_AAIGrid</span><span class="p">(</span><span class="n">wdir</span><span class="o">+</span><span class="s2">&quot;aaigrid.asc&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">proj</span><span class="o">=</span><span class="n">proj_osr</span><span class="p">,</span> <span class="n">to_esri</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    
+    <span class="c1"># Export to GeoTIFF format</span>
+    <span class="c1">#     For RADOLAN grids, this projection will probably not be recognized by ESRI ArcGIS.</span>
+    <span class="c1">#     Please note that that the geotransform for creating GeoTIFF files requires the</span>
+    <span class="c1">#     top-left corner of the bounding box. See help for io.to_GeoTIFF for further</span>
+    <span class="c1">#     instructions, particularly on how to define the geotransform.</span>
+    <span class="n">geotransform</span> <span class="o">=</span> <span class="p">[</span><span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]</span>
+    <span class="n">wradlib</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">to_GeoTIFF</span><span class="p">(</span><span class="n">wdir</span><span class="o">+</span><span class="s2">&quot;geotiff.tif&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">geotransform</span><span class="p">,</span> <span class="n">proj</span><span class="o">=</span><span class="n">proj_osr</span><span class="p">)</span>
+
+
+<span class="c1"># =======================================================</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">ex_grid_to_gis</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="wradlib.io.to_GeoTIFF.html" class="btn btn-neutral float-right" title="wradlib.io.to_GeoTIFF" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="wradlib.io.read_safnwc.html" class="btn btn-neutral" title="wradlib.io.read_safnwc" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016, wradlib developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.7.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

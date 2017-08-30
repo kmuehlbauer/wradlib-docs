@@ -1,0 +1,6 @@
+wradlib.comp.compose_weighted
+=============================
+
+.. currentmodule:: wradlib.comp
+
+.. autofunction:: compose_weighted

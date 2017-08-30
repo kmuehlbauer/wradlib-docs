@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Converting reflectivity to rainfall &mdash; wradlib</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/wradlib.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="wradlib" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="Automate image generation with sphinx" href="tutorial_autoimages.html"/>
+        <link rel="prev" title="Read and plot DX radar data from DWD" href="tutorial_reading_dx.html"/>
+    <link href="_static/wradlib.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+  <a href="index.html" class="icon icon-home"> wradlib
+
+
+
+</a>
+
+
+  <div class="version">
+    <button class="verbtn">0.6.0</button>
+    <div class="version-content">
+      <a href="../latest/">latest</a>
+      <a href="../0.7.0/">0.7.0</a>
+      <a href="../0.6.0/">0.6.0</a>
+    </div>
+  </div>
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_workflow.html">A typical workflow for radar-based rainfall estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_supported_formats.html">Supported radar data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_reading_dx.html">Read and plot DX radar data from DWD</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Converting reflectivity to rainfall</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#an-example-with-real-radar-data">An example with real radar data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_autoimages.html">Automate image generation with sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_curvelinear_grids.html">Plot data to curvelinear grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_attenuation.html">Attenuation correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_radolan_format.html">RADOLAN</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipes.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_setup.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">wradlib</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+      
+    <li>Converting reflectivity to rainfall</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial_get_rainfall.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="converting-reflectivity-to-rainfall">
+<h1>Converting reflectivity to rainfall<a class="headerlink" href="#converting-reflectivity-to-rainfall" title="Permalink to this headline">¶</a></h1>
+<p>Reflectivity (Z) and precipitation rate (R) can be related in form of a power law Z=a*R**b. The parameters <em>a</em> and <em>b</em> depend on the type of precipitation (i.e. drop size distribution and water temperature). <em>wradlib</em> provides a couple of functions that could be useful in this context. The following example demonstrates the steps to convert from the common unit <em>dBZ</em> (decibel of the reflectivity factor <em>Z</em>) to rainfall intensity (in the unit of mm/h):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">wradlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>This is an array of typical reflectivity values (<strong>unit: dBZ</strong>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dBZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">20.</span><span class="p">,</span> <span class="mf">30.</span><span class="p">,</span> <span class="mf">40.</span><span class="p">,</span> <span class="mf">45.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">,</span> <span class="mf">55.</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">dBZ</span>
+<span class="go">[ 20.  30.  40.  45.  50.  55.]</span>
+</pre></div>
+</div>
+<p>Convert to reflectivity factor Z (<strong>unit: mm^6/m^3</strong>)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">trafo</span><span class="o">.</span><span class="n">idecibel</span><span class="p">(</span><span class="n">dBZ</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">Z</span>
+<span class="go">[  1.00000000e+02   1.00000000e+03   1.00000000e+04   3.16227766e+04</span>
+<span class="go">   1.00000000e+05   3.16227766e+05]</span>
+</pre></div>
+</div>
+<p>Convert to rainfall intensity (<strong>unit: mm/h</strong>) using the Marshall-Palmer Z(R) parameters</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">zr</span><span class="o">.</span><span class="n">z2rz2r</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">200.</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">[  0.65   2.73  11.53  23.68  48.62  99.85]</span>
+</pre></div>
+</div>
+<p>Convert to rainfall depth (<strong>unit: mm</strong>) assuming a rainfall duration of five minutes (i.e. 300 seconds)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">depth</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">trafo</span><span class="o">.</span><span class="n">r2depth</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">[ 0.05  0.23  0.96  1.97  4.05  8.32]</span>
+</pre></div>
+</div>
+<div class="section" id="an-example-with-real-radar-data">
+<h2>An example with real radar data<a class="headerlink" href="#an-example-with-real-radar-data" title="Permalink to this headline">¶</a></h2>
+<p>The following example is based on observations of the DWD C-band radar on mount Feldberg (SW-Germany).
+The figure shows a 15 minute accumulation of rainfall which was produced from three consecutive radar
+scans at 5 minute intervals between 17:30 and 17:45 on June 8, 2008.</p>
+<p>The radar data are read using <a class="reference internal" href="generated/wradlib.io.readDX.html"><em>wradlib.io.readDX</em></a> function which returns an array of dBZ values and a metadata dictionary
+(see also <a class="reference internal" href="tutorial_reading_dx.html"><em>Read and plot DX radar data from DWD</em></a>). The conversion is carried out the same way as in the example above. The plot is produced using
+the function <a class="reference internal" href="generated/wradlib.vis.plot_ppi.html"><em>wradlib.vis.plot_ppi</em></a>. See full source code below for download.</p>
+<p>(<a class="reference external" href=".//tutorial_get_rainfall-1.py">Source code</a>, <a class="reference external" href=".//tutorial_get_rainfall-1.png">png</a>)</p>
+<div class="figure">
+<img alt="_images/tutorial_get_rainfall-1.png" src="_images/tutorial_get_rainfall-1.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_autoimages.html" class="btn btn-neutral float-right" title="Automate image generation with sphinx" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_reading_dx.html" class="btn btn-neutral" title="Read and plot DX radar data from DWD" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016, wradlib developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

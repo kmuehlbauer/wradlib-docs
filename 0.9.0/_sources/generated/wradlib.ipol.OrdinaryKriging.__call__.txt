@@ -1,0 +1,6 @@
+wradlib.ipol.OrdinaryKriging.__call__
+=====================================
+
+.. currentmodule:: wradlib.ipol
+
+.. automethod:: OrdinaryKriging.__call__

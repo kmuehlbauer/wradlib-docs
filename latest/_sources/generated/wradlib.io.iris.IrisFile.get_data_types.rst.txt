@@ -1,0 +1,6 @@
+wradlib\.io\.iris\.IrisFile\.get\_data\_types
+=============================================
+
+.. currentmodule:: wradlib.io.iris
+
+.. automethod:: IrisFile.get_data_types

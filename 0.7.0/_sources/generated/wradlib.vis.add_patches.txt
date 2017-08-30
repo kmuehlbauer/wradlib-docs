@@ -1,0 +1,6 @@
+wradlib.vis.add_patches
+=======================
+
+.. currentmodule:: wradlib.vis
+
+.. autofunction:: add_patches

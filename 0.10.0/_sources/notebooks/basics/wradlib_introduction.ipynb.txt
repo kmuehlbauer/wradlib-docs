@@ -1,0 +1,102 @@
+{
+ "metadata": {
+  "celltoolbar": "Slideshow",
+  "kernelspec": {
+   "display_name": "Python 2",
+   "language": "python",
+   "name": "python2"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.12"
+  },
+  "name": ""
+ },
+ "nbformat": 3,
+ "nbformat_minor": 0,
+ "worksheets": [
+  {
+   "cells": [
+    {
+     "cell_type": "markdown",
+     "metadata": {
+      "nbsphinx": "hidden",
+      "slideshow": {
+       "slide_type": "skip"
+      }
+     },
+     "source": [
+      "This notebook is part of the $\\omega radlib$ documentation: http://wradlib.org/wradlib-docs.\n",
+      "\n",
+      "Copyright (c) 2016, $\\omega radlib$ developers.\n",
+      "Distributed under the MIT License. See LICENSE.txt for more info."
+     ]
+    },
+    {
+     "cell_type": "heading",
+     "level": 1,
+     "metadata": {
+      "slideshow": {
+       "slide_type": "slide"
+      }
+     },
+     "source": [
+      "Import wradlib and check its version"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {
+      "slideshow": {
+       "slide_type": "fragment"
+      }
+     },
+     "source": [
+      "This simple example shows the $\\omega radlib$ version at rendering time."
+     ]
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "import wradlib\n",
+      "print(wradlib.__version__)"
+     ],
+     "language": "python",
+     "metadata": {
+      "slideshow": {
+       "slide_type": "fragment"
+      }
+     },
+     "outputs": [
+      {
+       "output_type": "stream",
+       "stream": "stdout",
+       "text": [
+        "0.10.0\n"
+       ]
+      },
+      {
+       "output_type": "stream",
+       "stream": "stderr",
+       "text": [
+        "/home/travis/miniconda/envs/wradlib/lib/python2.7/json/encoder.py:207: DeprecationWarning: Interpreting naive datetime as local 2017-04-10 07:24:53.273021. Please add timezone info to timestamps.\n",
+        "  chunks = self.iterencode(o, _one_shot=True)\n"
+       ]
+      }
+     ],
+     "prompt_number": 1
+    }
+   ],
+   "metadata": {}
+  }
+ ]
+}

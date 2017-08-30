@@ -1,0 +1,6 @@
+wradlib.zonalstats.GridPointsToPoly.check_empty
+===============================================
+
+.. currentmodule:: wradlib.zonalstats
+
+.. automethod:: GridPointsToPoly.check_empty

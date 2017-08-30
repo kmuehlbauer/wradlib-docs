@@ -1,0 +1,6 @@
+wradlib\.georef\.projected\_bincoords\_from\_radarspecs
+=======================================================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: projected_bincoords_from_radarspecs

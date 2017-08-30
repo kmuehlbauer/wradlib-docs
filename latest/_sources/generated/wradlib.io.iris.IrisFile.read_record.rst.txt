@@ -1,0 +1,6 @@
+wradlib\.io\.iris\.IrisFile\.read\_record
+=========================================
+
+.. currentmodule:: wradlib.io.iris
+
+.. automethod:: IrisFile.read_record

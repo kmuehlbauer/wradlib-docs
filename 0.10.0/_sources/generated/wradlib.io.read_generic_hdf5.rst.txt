@@ -1,0 +1,6 @@
+wradlib\.io\.read\_generic\_hdf5
+================================
+
+.. currentmodule:: wradlib.io
+
+.. autofunction:: read_generic_hdf5

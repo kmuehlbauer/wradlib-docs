@@ -1,0 +1,6 @@
+wradlib\.io\.read\_safnwc
+=========================
+
+.. currentmodule:: wradlib.io
+
+.. autofunction:: read_safnwc

@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Read and plot DX radar data from DWD &mdash; wradlib</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/wradlib.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="wradlib" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="Converting reflectivity to rainfall" href="tutorial_get_rainfall.html"/>
+        <link rel="prev" title="Supported radar data formats" href="tutorial_supported_formats.html"/>
+    
+    <link href="_static/wradlib.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+  <a href="index.html" class="icon icon-home"> wradlib
+
+
+
+</a>
+
+
+
+  <div class="version">
+    
+    <button class="verbtn">0.7.6</button>
+    <div class="version-content">
+      
+        <a href="../latest/">latest</a>
+        <a href="../0.7.6/">0.7.6</a>
+        <a href="../0.7.0/">0.7.0</a>
+        <a href="../0.6.0/">0.6.0</a>
+    </div>
+  </div>
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_workflow.html">A typical workflow for radar-based rainfall estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_supported_formats.html">Supported radar data formats</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Read and plot DX radar data from DWD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reading-dx-data">Reading DX-data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualizing-dbz-values">Visualizing dBZ values</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_get_rainfall.html">Converting reflectivity to rainfall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_autoimages.html">Automate image generation with sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_curvelinear_grids.html">Plot data to curvelinear grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_attenuation.html">Attenuation correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_radolan_format.html">RADOLAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_zonalstats.html">Zonalstats</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipes.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_setup.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">wradlib</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+      
+    <li>Read and plot DX radar data from DWD</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial_reading_dx.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="read-and-plot-dx-radar-data-from-dwd">
+<h1>Read and plot DX radar data from DWD<a class="headerlink" href="#read-and-plot-dx-radar-data-from-dwd" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial helps you to read and plot the raw polar radar data provided by German Weather Service (DWD).</p>
+<div class="section" id="reading-dx-data">
+<h2>Reading DX-data<a class="headerlink" href="#reading-dx-data" title="Permalink to this headline">¶</a></h2>
+<p>The German weather service provides polar radar data in the so called <code class="docutils literal"><span class="pre">DX</span></code> format.
+These have to be unpacked and transfered into an array of 360 (azimuthal resolution of 1 degree) by 128 (range resolution of 1 km).</p>
+<p>The naming convention for DX data is:
+<code class="docutils literal"><span class="pre">raa00-dx_&lt;location-id&gt;-&lt;YYMMDDHHMM&gt;-&lt;location-abreviation&gt;---bin</span></code> or <code class="docutils literal"><span class="pre">raa00-dx_&lt;location-id&gt;-&lt;YYYYMMDDHHMM&gt;-&lt;location-abreviation&gt;---bin</span></code>.
+For example: <code class="docutils literal"><span class="pre">raa00-dx_10908-200608281420-fbg---bin</span></code> raw data from radar station Feldberg (fbg, 10908) from 2006-08-28 14:20:00.</p>
+<p>Each DX file also contains additional information like the elevation angle for each beam. Note, however, that the format is not &#8220;self-describing&#8221;.</p>
+<p><strong>Raw data for one time step</strong></p>
+<p>Suppose we want to read a radar-scan for a defined time step.
+You need to make sure that the data file is available in the current working directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wradlib</span>
+<span class="n">one_scan</span><span class="p">,</span> <span class="n">attributes</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">readDX</span><span class="p">(</span><span class="s1">&#39;raa00-dx_10908-200608281420-fbg---bin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The readDX function returns two variables: the reflectivity array, and a dictionary of metadata attributes.</p>
+<p><strong>Raw data for multiple time steps</strong></p>
+<p>To read multiple scans into one array, you should create an empty array with the shape of the desired dimensions.
+In this example, the dataset contains 2 timesteps of 360 by 128 values. Note that we simply catch the metadata dictionary
+in a dummy variable:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">two_scans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">360</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
+<span class="n">two_scans</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">readDX</span><span class="p">(</span><span class="s1">&#39;raa00-dx_10908-0806021740-fbg---bin&#39;</span><span class="p">)</span>
+<span class="n">two_scans</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">_</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">readDX</span><span class="p">(</span><span class="s1">&#39;raa00-dx_10908-0806021745-fbg---bin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="visualizing-dbz-values">
+<h2>Visualizing dBZ values<a class="headerlink" href="#visualizing-dbz-values" title="Permalink to this headline">¶</a></h2>
+<p>Now we want to create a quick diagnostic PPI plot of reflectivity in a polar coordiate system:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="p">,</span> <span class="n">pm</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">plot_ppi</span><span class="p">(</span><span class="n">one_scan</span><span class="p">)</span>
+<span class="c1"># add a colorbar with label</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pm</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Reflectivity (dBZ)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a stratiform event. Apparently, the radar system has already masked the foothills of the Alps as clutter.
+The spike in the south-western sector is caused by a broadcasting tower nearby the radar antenna.</p>
+<img alt="_images/first_dBZ_strat.png" src="_images/first_dBZ_strat.png" />
+<p>Another image shows a convective situation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="p">,</span> <span class="n">pm</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">plot_ppi</span><span class="p">(</span><span class="n">two_scans</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pm</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Reflectivity (dBZ)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/first_dBZ_con.png" src="_images/first_dBZ_con.png" />
+<p>You can also modify or decorate the image further, e.g. add a cross-hair, a title, use a different colormap, or zoom in:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="c1"># Plot PPI,</span>
+<span class="n">ax</span><span class="p">,</span> <span class="n">pm</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">plot_ppi</span><span class="p">(</span><span class="n">two_scans</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;spectral&quot;</span><span class="p">)</span>
+<span class="c1"># add crosshair,</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">plot_ppi_crosshair</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">ranges</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">128</span><span class="p">])</span>
+<span class="c1"># add colorbar,</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pm</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Reflectivity (dBZ)&quot;</span><span class="p">)</span>
+<span class="c1"># add title,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reflectivity at 18-08-2006 02:25:00</span><span class="se">\n</span><span class="s1">DWD radar Feldberg&#39;</span><span class="p">)</span>
+<span class="c1"># and zoom in.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="_images/dBZ_con_title.png" src="_images/dBZ_con_title.png" />
+<p>In addition, you might want to tweak the colorscale to allow for better comparison of different images:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="c1"># Add first subplot (stratiform)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="c1"># Plot PPI,</span>
+<span class="n">ax</span><span class="p">,</span> <span class="n">pm</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">plot_ppi</span><span class="p">(</span><span class="n">one_scan</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;spectral&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="c1"># add crosshair,</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">plot_ppi_crosshair</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">ranges</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">128</span><span class="p">])</span>
+<span class="c1"># add colorbar,</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pm</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Reflectivity (dBZ)&quot;</span><span class="p">)</span>
+<span class="c1"># add title,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reflectivity at 2006-08-28 14:20:00</span><span class="se">\n</span><span class="s1">DWD radar Feldberg&#39;</span><span class="p">)</span>
+<span class="c1"># and zoom in.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
+<span class="c1"># Add second subplot (convective)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="c1"># Plot PPI,</span>
+<span class="n">ax</span><span class="p">,</span> <span class="n">pm</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">plot_ppi</span><span class="p">(</span><span class="n">two_scans</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;spectral&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="c1"># add crosshair,</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span><span class="n">plot_ppi_crosshair</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">ranges</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">128</span><span class="p">])</span>
+<span class="c1"># add colorbar,</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pm</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Reflectivity (dBZ)&quot;</span><span class="p">)</span>
+<span class="c1"># add title,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reflectivity at 2008-06-02 17:40:00</span><span class="se">\n</span><span class="s1">DWD radar Feldberg&#39;</span><span class="p">)</span>
+<span class="c1"># and zoom in.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="_images/dBZ_comp.png" src="_images/dBZ_comp.png" />
+<p>The radar data was kindly provided by the German Weather Service.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_get_rainfall.html" class="btn btn-neutral float-right" title="Converting reflectivity to rainfall" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_supported_formats.html" class="btn btn-neutral" title="Supported radar data formats" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016, wradlib developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.7.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Supported radar data formats &mdash; wradlib</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/wradlib.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="wradlib" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="Read and plot DX radar data from DWD" href="tutorial_reading_dx.html"/>
+        <link rel="prev" title="A typical workflow for radar-based rainfall estimation" href="tutorial_workflow.html"/>
+    <link href="_static/wradlib.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+  <a href="index.html" class="icon icon-home"> wradlib
+
+
+
+</a>
+
+
+  <div class="version">
+    <button class="verbtn">0.6.0</button>
+    <div class="version-content">
+      <a href="../latest/">latest</a>
+      <a href="../0.7.0/">0.7.0</a>
+      <a href="../0.6.0/">0.6.0</a>
+    </div>
+  </div>
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_workflow.html">A typical workflow for radar-based rainfall estimation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Supported radar data formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#german-weather-service-dx-format">German Weather Service: DX format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#german-weather-service-radolan-quantitative-composit">German Weather Service: RADOLAN (quantitative) composit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opera-hdf5-odim-h5">OPERA HDF5 (ODIM_H5)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gamic-hdf5">GAMIC HDF5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#netcdf">NetCDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gematronik-rainbow">Gematronik Rainbow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opera-bufr">OPERA BUFR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_reading_dx.html">Read and plot DX radar data from DWD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_get_rainfall.html">Converting reflectivity to rainfall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_autoimages.html">Automate image generation with sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_curvelinear_grids.html">Plot data to curvelinear grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_attenuation.html">Attenuation correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_radolan_format.html">RADOLAN</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipes.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_setup.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">wradlib</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+      
+    <li>Supported radar data formats</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial_supported_formats.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="supported-radar-data-formats">
+<h1>Supported radar data formats<a class="headerlink" href="#supported-radar-data-formats" title="Permalink to this headline">¶</a></h1>
+<p>The binary encoding of many radar products is a major obstacle for many potential radar users. Often, decoder software is not easily available. In case formats are documented, the implementation of decoders is a major programming effort. This tutorial provides an overview of the data formats currently supported by wradlib. We seek to continuously enhance the range of supported formats, so this document is only a snapshot. If you need a specific file format to be supported by wradlib, please <a class="reference external" href="https://bitbucket.org/wradlib/wradlib/issues/new">raise an issue</a> of type <em>enhancement</em>. You can provide support by adding documents which help to decode the format, e.g. format reference documents or software code in other languages for decoding the format.</p>
+<p>At the moment, <em>supported format</em> means that the radar format can be read and further processed by wradlib. Normally, wradlib will return an array of data values and a dictionary of metadata - if the file contains any. wradlib does not support encoding to any specific file formats, yet! This might change in the future, but it is not a priority. However, you can use Python&#8217;s netCDF4 or h5py packages to encode the results of your analysis to standard self-describing file formats such as netCDF or hdf5. If you have Python(x,y) installed on your machine, these packages are readily available to you.</p>
+<p>In the following, we will provide an overview of file formats which can be currently read by wradlib. Reading weather radar files is done via the <a class="reference internal" href="io.html"><em>Raw Data I/O</em></a> module. There you will find a complete function reference. So normally, you will start by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wradlib.io</span> <span class="kn">as</span> <span class="nn">io</span>
+</pre></div>
+</div>
+<div class="section" id="german-weather-service-dx-format">
+<h2>German Weather Service: DX format<a class="headerlink" href="#german-weather-service-dx-format" title="Permalink to this headline">¶</a></h2>
+<p>The German Weather Service uses the DX file format to encode local radar sweeps. DX data are in polar coordinates. The naming convention is as follows: <em>raa00-dx_&lt;location-id&gt;-&lt;YYMMDDHHMM&gt;-&lt;location-abreviation&gt;&#8212;bin or raa00-dx_&lt;location-id&gt;-&lt;YYYYMMDDHHMM&gt;-&lt;location-abreviation&gt;&#8212;bin</em>.
+<a class="reference internal" href="tutorial_reading_dx.html"><em>Read and plot DX radar data from DWD</em></a> provides an extensive introduction into working with DX data. For now, we would just like to know how to read the data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">readDX</span><span class="p">(</span><span class="s2">&quot;mydrive:/path/to/my/file/filename&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal"><span class="pre">data</span></code> is a two dimensional array of shape (number of azimuth angles, number of range gates). This means that the number of rows of the array corresponds to the number of azimuth angles of the radar sweep while the number of columns corresponds to the number of range gates per ray.</p>
+</div>
+<div class="section" id="german-weather-service-radolan-quantitative-composit">
+<h2>German Weather Service: RADOLAN (quantitative) composit<a class="headerlink" href="#german-weather-service-radolan-quantitative-composit" title="Permalink to this headline">¶</a></h2>
+<p>The quantitative composite format of the DWD (German Weather Service) was established in the course of the <a class="reference external" href="http://www.dwd.de/RADOLAN">RADOLAN project</a>. Most quantitative composite products from the DWD are distributed in this format, e.g. the R-series (RX, RY, RH, RW, ...), the S-series (SQ, SH, SF, ...), and the E-series (European quantitative composite, e.g. EZ, EH, EB). Please see the <a class="reference external" href="http://www.dwd.de/bvbw/generator/DWDWWW/Content/Wasserwirtschaft/en/Unsere__Leistungen__en/Radarniederschlagsprodukte__en/RADOLAN__en/RADOLAN__RADVOR__OP__Komposit__format__2__2__1__pdf,templateId=raw,property=publicationFile.pdf/RADOLAN_RADVOR_OP_Komposit_format_2_2_1_pdf.pdf">composite format description</a> for a full reference and a full table of products (unfortunately only in German language).</p>
+<p>Currently, the RADOLAN composites have a spatial resolution of 1km x 1km, with the national composits (R- and S-series) being 900 x 900 grids, and the European composits 1500 x 1400 grids. The projection is polar-stereographic. The products can be read by the following function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read_RADOLAN_composite</span><span class="p">(</span><span class="s2">&quot;mydrive:/path/to/my/file/filename&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal"><span class="pre">data</span></code> is a two dimensional integer array of shape (number of rows, number of columns). Different product types might need different levels of postprocessing, e.g. if the product contains rain rates or accumulations, you will normally have to divide data by factor 10. <code class="docutils literal"><span class="pre">metadata</span></code> is again a dictionary which provides metadata from the files header section, e.g. using the keys <em>producttype</em>, <em>datetime</em>, <em>intervalseconds</em>, <em>nodataflag</em>. Masking the NoData (or missing) values can be done by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">maskeddata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_equal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;nodataflag&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="opera-hdf5-odim-h5">
+<h2>OPERA HDF5 (ODIM_H5)<a class="headerlink" href="#opera-hdf5-odim-h5" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.hdfgroup.org/HDF5/">HDF5</a> is a data model, library, and file format for storing and managing data. The <a class="reference external" href="http://www.eumetnet.eu/opera">OPERA 3 program</a> developed a convention (or information model) on how to store and exchange radar data in hdf5 format. It is based on the work of <a class="reference external" href="http://www.smhi.se/hfa_coord/cost717">COST Action 717</a> and is used e.g. in real-time operations in the Nordic European countries. The OPERA Data and Information Model (ODIM) is documented e.g. in this <a class="reference external" href="http://www.eol.ucar.edu/system/files/OPERA_2008_03_WP2.1b_ODIM_H5_v2.1.pdf">report</a> and in a <a class="reference external" href="http://www.eumetnet.eu/sites/default/files/OPERA_2008_18_WP2.1b_ODIM_UML.pdf">UML representation</a>. Make use of these documents in order to understand the organization of OPERA hdf5 files!</p>
+<p>The hierarchical nature of HDF5 can be described as being similar to directories, files, and links on a hard-drive. Actual metadata are stored as so-called <em>attributes</em>, and these attributes are organized together in so-called <em>groups</em>. Binary data are stored as so-called <em>datasets</em>. As for ODIM_H5, the <code class="docutils literal"><span class="pre">root</span></code> (or top level) group contains three groups of metadata: these are called <code class="docutils literal"><span class="pre">what</span></code> (object, information model version, and date/time information), <code class="docutils literal"><span class="pre">where</span></code> (geographical information), and <code class="docutils literal"><span class="pre">how</span></code> (quality and optional/recommended metadata). For a very simple product, e.g. a CAPPI, the data is organized in a group called <code class="docutils literal"><span class="pre">dataset1</span></code> which contains another group called <code class="docutils literal"><span class="pre">data1</span></code> where the actual binary data are found in <code class="docutils literal"><span class="pre">data</span></code>. In analogy with a file system on a hard-disk, the HDF5 file containing this simple product is organized like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>/
+/what
+/where
+/how
+/dataset1
+/dataset1/data1
+/dataset1/data1/data
+</pre></div>
+</div>
+<p>The philosophy behind the wradlib interface to OPERA&#8217;s data model is very straightforward: wradlib simply translates the complete file structure to <em>one</em> dictionary and returns this dictionary to the user. Thus, the potential complexity of the stored data is kept and it is left to the user how to proceed with this data. The keys of the output dictionary are strings that correspond to the &#8220;directory trees&#8221; shown above. Each key ending with <code class="docutils literal"><span class="pre">/data</span></code> points to a Dataset (i.e. a numpy array of data). Each key ending with <code class="docutils literal"><span class="pre">/what</span></code>, <code class="docutils literal"><span class="pre">/where</span></code> or <code class="docutils literal"><span class="pre">/how</span></code> points to another dictionary of metadata. The entire output can be obtained by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fcontent</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read_OPERA_hdf5</span><span class="p">(</span><span class="s2">&quot;mydrive:/path/to/my/file/filename&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The user should inspect the output obtained from his or her hdf5 file in order to see how access those items which should be further processed. In order to get a readable overview of the output dictionary, one can use the pretty printing module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># which keyswords can be used to access the content?</span>
+<span class="k">print</span> <span class="n">fcontent</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="c1"># print the entire content including values of data and metadata</span>
+<span class="c1"># (numpy arrays will not be entirely printed)</span>
+<span class="kn">import</span> <span class="nn">pprint</span> <span class="kn">as</span> <span class="nn">pp</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">fcontent</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Please note that in order to experiment with such datasets, you can download hdf5 sample data from the <a class="reference external" href="http://www.eumetnet.eu/odyssey-opera-data-centre">Odyssey page</a> of the <a class="reference external" href="http://www.eumetnet.eu/opera">OPERA 3 homepage</a>.</p>
+</div>
+<div class="section" id="gamic-hdf5">
+<h2>GAMIC HDF5<a class="headerlink" href="#gamic-hdf5" title="Permalink to this headline">¶</a></h2>
+<p>GAMIC refers to the commercial <a class="reference external" href="http://www.gamic.com">GAMIC Enigma V3 MURAN software</a> which exports data in hdf5 format. The concept is quite similar to the above <a class="reference internal" href="#opera-hdf5-odim-h5">OPERA HDF5 (ODIM_H5)</a> format. Such a file (typical ending: <em>.mvol</em>) can be read by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read_GAMIC_hdf5</span><span class="p">(</span><span class="s2">&quot;mydrive:/path/to/my/file/filename&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>While metadata represents the usual dictionary of metadata, the data variable is a dictionary which might contain several numpy arrays with the keywords of the dictionary indicating different moments.</p>
+</div>
+<div class="section" id="netcdf">
+<h2>NetCDF<a class="headerlink" href="#netcdf" title="Permalink to this headline">¶</a></h2>
+<p>The NetCDF format also claims to be self-describing. However, as for all such formats, the developers of netCDF also admit that &#8220;[...] the mere use of netCDF is not sufficient to make data self-describing and meaningful to both humans and machines [...]&#8221; (see <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf/docs/creating_self.html">here</a>). Different radar operators or data distributors will use different naming conventions and data hierarchies (i.e. &#8220;data models&#8221;) that the reading program might need to know about.</p>
+<p><em>wradlib</em> provides two solutions to address this challenge. The first one ignores the concept of data models and just pulls all data and metadata from a NetCDF file (<code class="docutils literal"><span class="pre">read_generic_netcdf</span></code>). The second is designed for a specific data model used by the EDGE software (<code class="docutils literal"><span class="pre">read_EDGE_netcdf</span></code>).</p>
+<p><strong>Generic NetCDF reader (includes CfRadial)</strong></p>
+<p><em>wradlib</em> provides a function that will virtually read any NetCDF file irrespective of the data model: <a class="reference internal" href="generated/wradlib.io.read_generic_netcdf.html"><em>wradlib.io.read_generic_netcdf</em></a>. It is built upon Python&#8217;s <a class="reference external" href="http://netcdf4-python.googlecode.com/svn/trunk/docs/netCDF4-module.html">netcdf4</a> library. <code class="docutils literal"><span class="pre">read_generic_netcdf</span></code> will return only one object, a dictionary, that contains all the contents of the NetCDF file corresponding to the original file structure. This includes all the metadata, as well as the so called &#8220;dimensions&#8221; (describing the dimensions of the actual data arrays) and the &#8220;variables&#8221; which will contains the actual data. Users can use this dictionary at will in order to query data and metadata; however, they should make sure to consider the documentation of the corresponding data model. <code class="docutils literal"><span class="pre">read_generic_netcdf</span></code> has been shown to work with a lot of different data models, most notably <strong>CfRadial</strong> (see <a class="reference external" href="http://www.ral.ucar.edu/projects/titan/docs/radial_formats/cfradial.html">here</a> for details). A typical call to <code class="docutils literal"><span class="pre">read_generic_netcdf</span></code> would look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">outdict</span> <span class="o">=</span> <span class="n">wradlib</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_generic_netcdf</span><span class="p">(</span><span class="s2">&quot;mydrive:/path/to/my/file/filename&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">outdict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+   <span class="k">print</span> <span class="n">key</span>
+</pre></div>
+</div>
+<p>Please see <a class="reference external" href="https://bitbucket.org/wradlib/wradlib/src/default/examples/generic_netcdf_example.py">this example file</a>  to get started.</p>
+<p><strong>NetCDF files exported by the EDGE software</strong></p>
+<p>EDGE is a commercial software for radar control and data analysis provided by the Enterprise Electronics Corporation. It allows for netCDF data export. The resulting files can be read by <a class="reference internal" href="generated/wradlib.io.read_generic_netcdf.html"><em>wradlib.io.read_generic_netcdf</em></a>, but <em>wradlib</em> also provides a specific function,  <a class="reference internal" href="generated/wradlib.io.read_EDGE_netcdf.html"><em>wradlib.io.read_EDGE_netcdf</em></a> to return metadata and data as seperate objects:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read_EDGE_netcdf</span><span class="p">(</span><span class="s2">&quot;mydrive:/path/to/my/file/filename&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gematronik-rainbow">
+<h2>Gematronik Rainbow<a class="headerlink" href="#gematronik-rainbow" title="Permalink to this headline">¶</a></h2>
+<p>Rainbow refers to the commercial <a class="reference external" href="http://www.gematronik.com/products/radar-components/rainbowR-5/">RAINBOW®5 APPLICATION SOFTWARE</a> which exports data in an XML flavour, which due to binary data blobs violates XML standard. Gematronik provided python code for implementing this reader in wradlib, which is very much appreciated.</p>
+<p>The philosophy behind the wradlib interface to Gematroniks data model is very straightforward: wradlib simply translates the complete xml file structure to <em>one</em> dictionary and returns this dictionary to the user. Thus, the potential complexity of the stored data is kept and it is left to the user how to proceed with this data. The keys of the output dictionary are strings that correspond to the &#8220;xml nodes&#8221; and &#8220;xml attributes&#8221;. Each <code class="docutils literal"><span class="pre">data</span></code> key points to a Dataset (i.e. a numpy array of data). Such a file (typical ending: <em>.vol</em> or <em>.azi</em>) can be read by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fcontent</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read_Rainbow</span><span class="p">(</span><span class="s2">&quot;mydrive:/path/to/my/file/filename&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The user should inspect the output obtained from his or her Rainbow file in order to see how access those items which should be further processed. In order to get a readable overview of the output dictionary, one can use the pretty printing module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># which keyswords can be used to access the content?</span>
+<span class="k">print</span> <span class="n">fcontent</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="c1"># print the entire content including values of data and metadata</span>
+<span class="c1"># (numpy arrays will not be entirely printed)</span>
+<span class="kn">import</span> <span class="nn">pprint</span> <span class="kn">as</span> <span class="nn">pp</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">fcontent</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can check this <a class="reference download internal" href="_downloads/load_rainbow_example.py"><code class="xref download docutils literal"><span class="pre">example</span> <span class="pre">script</span></code></a> for getting a first impression.</p>
+</div>
+<div class="section" id="opera-bufr">
+<h2>OPERA BUFR<a class="headerlink" href="#opera-bufr" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">wradlib does not support the BUFR format anymore!</p>
+</div>
+<p>The Binary Universal Form for the Representation of meteorological data (BUFR)
+is a binary data format maintained by the World Meteorological Organization (WMO).</p>
+<p>The BUFR format was adopted by <a class="reference external" href="http://www.eumetnet.eu/opera">OPERA</a> for the representation of weather radar data.
+A BUFR file consists of a set of <em>descriptors</em> which contain all the relevant metadata and a data section.
+The <em>descriptors</em> are identified as a tuple of three integers. The meaning of these tupels is described in the so-called BUFR
+tables. There are generic BUFR tables provided by the WMO, but it is also possible to define so called <em>local tables</em>
+- which was done by the OPERA consortium for the purpose of radar data representation.</p>
+<p>In previous revisions, wradlib supported reading OPERA BUFR files via <code class="docutils literal"><span class="pre">io.read_BUFR</span></code>. This support is no longer maintained.</p>
+<dl class="docutils">
+<dt>If you want to use BUFR files together with wradlib, we recommend that you check out the OPERA software webpage at</dt>
+<dd><a class="reference external" href="http://www.eumetnet.eu/opera-software">http://www.eumetnet.eu/opera-software</a> where you will find software for BUFR decoding. In particular, you might want to check out</dd>
+</dl>
+<p><a class="reference external" href="http://www.eumetnet.eu/sites/default/files/bufr-opera-mf-1.21.tar_.gz">this tool</a> which seems to support the conversion of
+OPERA BUFR files to ODIM_H5 (which is supported by wradlib). However, you have to build it yourself.</p>
+<p>It would be great if someone could add a tutorial on how to use OPERA BUFR software together with wradlib!</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_reading_dx.html" class="btn btn-neutral float-right" title="Read and plot DX radar data from DWD" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_workflow.html" class="btn btn-neutral" title="A typical workflow for radar-based rainfall estimation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016, wradlib developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

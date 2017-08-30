@@ -1,0 +1,6 @@
+wradlib.dp.unfold_phi_vulpiani
+==============================
+
+.. currentmodule:: wradlib.dp
+
+.. autofunction:: unfold_phi_vulpiani

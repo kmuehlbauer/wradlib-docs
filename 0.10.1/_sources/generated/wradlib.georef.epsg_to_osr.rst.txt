@@ -1,0 +1,6 @@
+wradlib\.georef\.epsg\_to\_osr
+==============================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: epsg_to_osr

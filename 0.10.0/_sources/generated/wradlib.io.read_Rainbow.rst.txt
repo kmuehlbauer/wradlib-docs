@@ -1,0 +1,6 @@
+wradlib\.io\.read\_Rainbow
+==========================
+
+.. currentmodule:: wradlib.io
+
+.. autofunction:: read_Rainbow

@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Recipes &mdash; wradlib</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/wradlib.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="wradlib" href="index.html"/>
+        <link rel="next" title="Library Reference" href="reference.html"/>
+        <link rel="prev" title="Zonalstats" href="tutorial_zonalstats.html"/>
+    
+    <link href="_static/wradlib.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+  <a href="index.html" class="icon icon-home"> wradlib
+
+
+
+</a>
+
+
+
+  <div class="version">
+    
+    <button class="verbtn">0.7.6</button>
+    <div class="version-content">
+      
+        <a href="../latest/">latest</a>
+        <a href="../0.7.6/">0.7.6</a>
+        <a href="../0.7.0/">0.7.0</a>
+        <a href="../0.6.0/">0.6.0</a>
+    </div>
+  </div>
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Recipes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-publish-my-recipe-here">How can I publish my recipe here?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recipe-1-clutter-and-attenuation-correction-plus-composition-for-two-dwd-radars">Recipe #1: Clutter and attenuation correction plus composition for two DWD radars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recipe-2-reading-and-visualizing-an-odim-h5-polar-volume">Recipe #2: Reading and visualizing an ODIM_H5 polar volume</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_setup.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">wradlib</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Recipes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/recipes.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="recipes">
+<h1>Recipes<a class="headerlink" href="#recipes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-can-i-publish-my-recipe-here">
+<h2>How can I publish my recipe here?<a class="headerlink" href="#how-can-i-publish-my-recipe-here" title="Permalink to this headline">¶</a></h2>
+<p>This recipe section provides a collection of code snippets for exemplary wradlib applications. Compared to the <a class="reference internal" href="tutorials.html"><em>Tutorials</em></a> section, the level of documentation is a bit lower. For each recipe, we provide a short summary and a link to the example code.</p>
+<p>Please feel to send us your recipes so we can include them on this page. Please send an e-mail to <a class="reference external" href="mailto:wradlib-dev&#37;&#52;&#48;googlegroups&#46;com">wradlib-dev<span>&#64;</span>googlegroups<span>&#46;</span>com</a> containing:</p>
+<ul class="simple">
+<li><em>optional</em>: name and affiliation</li>
+<li>a suggested title of the recipe</li>
+<li>a short decription of the recipe (max. 100 words)</li>
+<li>the recipe code (please add comments within the code!)</li>
+<li><em>optional</em>: the data needed to run the code (or a hyperlink to the data)</li>
+<li><em>optional</em>: some test output of the recipe (e.g. an image file)</li>
+</ul>
+</div>
+<div class="section" id="recipe-1-clutter-and-attenuation-correction-plus-composition-for-two-dwd-radars">
+<h2>Recipe #1: Clutter and attenuation correction plus composition for two DWD radars<a class="headerlink" href="#recipe-1-clutter-and-attenuation-correction-plus-composition-for-two-dwd-radars" title="Permalink to this headline">¶</a></h2>
+<p>This recipe shows a workflow to process radar data provided by the German Weather Service (DWD). The processing includes: <em>(1)</em> Reading local <a class="reference internal" href="tutorial_supported_formats.html"><em>DX data</em></a> for radars Feldberg and Tuerkheim. <em>(2)</em> Clutter correction using the <a class="reference internal" href="clutter.html"><em>Gabella filter algorithm</em></a>. <em>(3)</em> Attenuation correction using the <a class="reference internal" href="atten.html"><em>Kraemer algorithm</em></a>. <em>(4)</em> Conversion from reflectivity to rainfall using the <a class="reference internal" href="zr.html"><em>Z-R Conversions</em></a> module. <em>(5)</em> Accumulation of rainfall depths over the entire event. <em>(6)</em> <a class="reference internal" href="comp.html"><em>Composition</em></a> of data from both radars to a common Cartesian grid (Gauss Krueger Zone 3). Composition is based on a weighted combination, using the sampling volume as a <a class="reference internal" href="qual.html"><em>quality criterion</em></a> <em>(7)</em> Plotting a rainfall map using <a class="reference internal" href="vis.html"><em>cartesian_plot</em></a>:</p>
+<a class="reference external image-reference" href="_images/recipe1_fig1.png"><img alt="_images/recipe1_fig1.png" src="_images/recipe1_fig1.png" /></a>
+<p><code class="docutils literal"><span class="pre">(click</span> <span class="pre">image</span> <span class="pre">to</span> <span class="pre">enlarge)</span></code></p>
+<p><a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/recipe1_clutter_attenuation_composition.py">Download source</a></p>
+<p><a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/data/recipe1_data.zip">Download required data</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In order to run the recipe code, you need to place the extract the sample data into a directory <code class="docutils literal"><span class="pre">data/</span></code> relative to the location of the recipe script.</p>
+</div>
+</div>
+<div class="section" id="recipe-2-reading-and-visualizing-an-odim-h5-polar-volume">
+<h2>Recipe #2: Reading and visualizing an ODIM_H5 polar volume<a class="headerlink" href="#recipe-2-reading-and-visualizing-an-odim-h5-polar-volume" title="Permalink to this headline">¶</a></h2>
+<p>This recipe shows how extract the polar volume data from an ODIM_H5 hdf5 file (KNMI example file from OPERA), contruct a 3-dimensional Cartesian volume and produce a diagnostic plot. The challenge for this file is that for each elevation angle, the scan strategy is different.</p>
+<a class="reference external image-reference" href="_images/recipe2_fig1.png"><img alt="_images/recipe2_fig1.png" src="_images/recipe2_fig1.png" /></a>
+<p><code class="docutils literal"><span class="pre">(click</span> <span class="pre">image</span> <span class="pre">to</span> <span class="pre">enlarge)</span></code></p>
+<p><a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/recipe2_polar_volume_example.py">Download source</a></p>
+<p><a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/data/knmi_polar_volume.h5">Download required data</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In order to run the recipe code, you need to place the sample data into a directory <code class="docutils literal"><span class="pre">data/</span></code> relative to the location of the recipe script.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reference.html" class="btn btn-neutral float-right" title="Library Reference" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_zonalstats.html" class="btn btn-neutral" title="Zonalstats" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016, wradlib developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.7.6',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

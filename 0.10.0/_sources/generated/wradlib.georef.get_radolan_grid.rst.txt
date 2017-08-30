@@ -1,0 +1,6 @@
+wradlib\.georef\.get\_radolan\_grid
+===================================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: get_radolan_grid

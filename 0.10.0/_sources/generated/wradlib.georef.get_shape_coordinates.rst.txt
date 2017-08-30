@@ -1,0 +1,6 @@
+wradlib\.georef\.get\_shape\_coordinates
+========================================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: get_shape_coordinates

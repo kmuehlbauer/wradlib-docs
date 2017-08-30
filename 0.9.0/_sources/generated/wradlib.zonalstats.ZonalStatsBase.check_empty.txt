@@ -1,0 +1,6 @@
+wradlib.zonalstats.ZonalStatsBase.check_empty
+=============================================
+
+.. currentmodule:: wradlib.zonalstats
+
+.. automethod:: ZonalStatsBase.check_empty

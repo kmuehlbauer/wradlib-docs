@@ -1,0 +1,6 @@
+wradlib\.io\.iris\.IrisFile\.get\_task\_type\_scan\_info
+========================================================
+
+.. currentmodule:: wradlib.io.iris
+
+.. automethod:: IrisFile.get_task_type_scan_info

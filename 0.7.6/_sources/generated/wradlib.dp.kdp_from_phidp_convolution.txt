@@ -1,0 +1,6 @@
+wradlib.dp.kdp_from_phidp_convolution
+=====================================
+
+.. currentmodule:: wradlib.dp
+
+.. autofunction:: kdp_from_phidp_convolution

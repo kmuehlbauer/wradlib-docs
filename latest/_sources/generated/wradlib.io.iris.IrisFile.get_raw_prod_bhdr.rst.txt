@@ -1,0 +1,6 @@
+wradlib\.io\.iris\.IrisFile\.get\_raw\_prod\_bhdr
+=================================================
+
+.. currentmodule:: wradlib.io.iris
+
+.. automethod:: IrisFile.get_raw_prod_bhdr

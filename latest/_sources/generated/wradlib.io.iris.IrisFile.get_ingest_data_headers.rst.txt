@@ -1,0 +1,6 @@
+wradlib\.io\.iris\.IrisFile\.get\_ingest\_data\_headers
+=======================================================
+
+.. currentmodule:: wradlib.io.iris
+
+.. automethod:: IrisFile.get_ingest_data_headers

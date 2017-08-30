@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Zonalstats &mdash; wradlib</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/wradlib.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="wradlib" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="Recipes" href="recipes.html"/>
+        <link rel="prev" title="RADOLAN" href="tutorial_radolan_format.html"/>
+    
+    <link href="_static/wradlib.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+  <a href="index.html" class="icon icon-home"> wradlib
+
+
+
+</a>
+
+
+
+  <div class="version">
+    
+    <button class="verbtn">0.8.0</button>
+    <div class="version-content">
+      
+        <a href="../latest/">latest</a>
+        <a href="../0.8.0/">0.8.0</a>
+        <a href="../0.7.6/">0.7.6</a>
+        <a href="../0.7.0/">0.7.0</a>
+        <a href="../0.6.0/">0.6.0</a>
+    </div>
+  </div>
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_workflow.html">A typical workflow for radar-based rainfall estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_supported_formats.html">Supported radar data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_reading_dx.html">Read and plot DX radar data from DWD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_get_rainfall.html">Converting reflectivity to rainfall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_autoimages.html">Automate image generation with sphinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_curvelinear_grids.html">Plot data to curvelinear grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_attenuation.html">Attenuation correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_radolan_format.html">RADOLAN</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Zonalstats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datasource">DataSource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zonaldata">ZonalData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">ZonalStats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipes.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_setup.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">wradlib</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+      
+    <li>Zonalstats</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial_zonalstats.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="zonalstats">
+<h1>Zonalstats<a class="headerlink" href="#zonalstats" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="zonalstats.html#module-wradlib.zonalstats" title="wradlib.zonalstats"><code class="xref py py-mod docutils literal"><span class="pre">zonalstats</span></code></a> module provides classes and functions for calculation of zonal statistics for data on arbitrary grids and projections.</p>
+<p>It provides classes for:</p>
+<blockquote>
+<div><ul class="simple">
+<li>managing georeferenced data (grid points or grid polygons, zonal polygons),</li>
+<li>calculation of geographic intersections and managing resulting vector data</li>
+<li>calculation of zonal statistics and managing result data as vector attributes</li>
+<li>output to vector and raster files available within ogr/gdal</li>
+</ul>
+</div></blockquote>
+<div class="section" id="datasource">
+<h2>DataSource<a class="headerlink" href="#datasource" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="generated/wradlib.zonalstats.DataSource.html#wradlib.zonalstats.DataSource" title="wradlib.zonalstats.DataSource"><code class="xref py py-class docutils literal"><span class="pre">DataSource</span></code></a> class handles point or polygon vector data by wrapping ogr.DataSource with special functions.</p>
+<p>The following example shows how to create different DataSource objects:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wradlib</span> <span class="kn">as</span> <span class="nn">wrl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">osr</span>
+
+<span class="c1"># create gk zone 2 projection osr object</span>
+<span class="n">proj_gk2</span> <span class="o">=</span> <span class="n">osr</span><span class="o">.</span><span class="n">SpatialReference</span><span class="p">()</span>
+<span class="n">proj_gk2</span><span class="o">.</span><span class="n">ImportFromEPSG</span><span class="p">(</span><span class="mi">31466</span><span class="p">)</span>
+
+<span class="c1"># Setting up DataSource</span>
+<span class="n">box0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2600000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">],[</span><span class="mf">2600000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2600000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">]])</span>
+<span class="n">box1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">],[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2620000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],[</span><span class="mf">2620000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">]])</span>
+<span class="n">box2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2600000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],[</span><span class="mf">2600000.</span><span class="p">,</span> <span class="mf">5650000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5650000.</span><span class="p">],[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2600000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">]])</span>
+<span class="n">box3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5650000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2620000.</span><span class="p">,</span> <span class="mf">5650000.</span><span class="p">],[</span><span class="mf">2620000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">]])</span>
+
+<span class="n">point0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">get_centroid</span><span class="p">(</span><span class="n">box0</span><span class="p">))</span>
+<span class="n">point1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">get_centroid</span><span class="p">(</span><span class="n">box1</span><span class="p">))</span>
+<span class="n">point2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">get_centroid</span><span class="p">(</span><span class="n">box2</span><span class="p">))</span>
+<span class="n">point3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">get_centroid</span><span class="p">(</span><span class="n">box3</span><span class="p">))</span>
+
+<span class="c1"># creates Polygons in Datasource</span>
+<span class="n">poly</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">DataSource</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">box0</span><span class="p">,</span> <span class="n">box1</span><span class="p">]),</span> <span class="n">srs</span><span class="o">=</span><span class="n">proj_gk2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;poly&#39;</span><span class="p">)</span>
+
+<span class="c1"># creates Points in Datasource</span>
+<span class="n">point</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">DataSource</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">point0</span><span class="p">,</span> <span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">point3</span><span class="p">)),</span>
+                                  <span class="n">srs</span><span class="o">=</span><span class="n">proj_gk2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;point&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let&#8217;s have a look at the data, which will be exported as numpy arrays. The property <code class="docutils literal"><span class="pre">data</span></code> exports all available data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Currently data can also be retrieved by:</p>
+<ul class="simple">
+<li>index (<code class="xref py py-func docutils literal"><span class="pre">DataSource.get_data_by_idx</span></code>),</li>
+<li>attribute (<code class="xref py py-func docutils literal"><span class="pre">DataSource.get_data_by_att</span></code>) and</li>
+<li>geometry (<code class="xref py py-func docutils literal"><span class="pre">DataSource.get_data_by_geom</span></code>).</li>
+</ul>
+<p>Now, with the DataSource being created, we can add/set attribute data of the features:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add attribute</span>
+<span class="n">poly</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.1</span><span class="p">,</span> <span class="mf">20.2</span><span class="p">,</span> <span class="mf">30.3</span><span class="p">,</span> <span class="mf">40.4</span><span class="p">]))</span>
+<span class="n">point</span><span class="o">.</span><span class="n">set_attribute</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.1</span><span class="p">,</span> <span class="mf">20.2</span><span class="p">,</span> <span class="mf">30.3</span><span class="p">,</span> <span class="mf">40.4</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Attributes associated with features can also be retrieved:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span># get attributes
+print(poly.get_attributes([&#39;mean&#39;])
+# get attributes filtered
+print(poly.get_attributes([&#39;mean&#39;], filt=(&#39;index&#39;, 2)))
+</pre></div>
+</div>
+<p>Finally, we can export the contained data to OGR/GDAL supported <a class="reference external" href="http://www.gdal.org/ogr_formats.html">vector</a> and <a class="reference external" href="http://www.gdal.org/formats_list.html">raster</a> files:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># dump as &#39;ESRI Shapefile&#39;, default</span>
+<span class="n">poly</span><span class="o">.</span><span class="n">dump_vector</span><span class="p">(</span><span class="s1">&#39;test_poly.shp&#39;</span><span class="p">)</span>
+<span class="n">point</span><span class="o">.</span><span class="n">dump_vector</span><span class="p">(</span><span class="s1">&#39;test_point.shp&#39;</span><span class="p">)</span>
+<span class="c1"># dump as &#39;GeoJSON&#39;</span>
+<span class="n">poly</span><span class="o">.</span><span class="n">dump_vector</span><span class="p">(</span><span class="s1">&#39;test_poly.geojson&#39;</span><span class="p">,</span> <span class="s1">&#39;GeoJSON&#39;</span><span class="p">)</span>
+<span class="n">point</span><span class="o">.</span><span class="n">dump_vector</span><span class="p">(</span><span class="s1">&#39;test_point.geojson&#39;</span><span class="p">,</span> <span class="s1">&#39;GeoJSON&#39;</span><span class="p">)</span>
+<span class="c1"># dump as &#39;GTiff&#39;, default</span>
+<span class="n">poly</span><span class="o">.</span><span class="n">dump_raster</span><span class="p">(</span><span class="s1">&#39;test_poly_raster.tif&#39;</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">pixel_size</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
+<span class="c1"># dump as &#39;netCDF&#39;</span>
+<span class="n">poly</span><span class="o">.</span><span class="n">dump_raster</span><span class="p">(</span><span class="s1">&#39;test_poly_raster.nc&#39;</span><span class="p">,</span> <span class="s1">&#39;netCDF&#39;</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">pixel_size</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="zonaldata">
+<h2>ZonalData<a class="headerlink" href="#zonaldata" title="Permalink to this headline">¶</a></h2>
+<p>ZonalData is usually available as georeferenced regular gridded data. Here the <a class="reference internal" href="generated/wradlib.zonalstats.ZonalDataBase.html#wradlib.zonalstats.ZonalDataBase" title="wradlib.zonalstats.ZonalDataBase"><code class="xref py py-class docutils literal"><span class="pre">ZonalDataBase</span></code></a> class manages the grid data, the zonal data (target polygons) and the intersection data of source grid and target polygons.
+Because the calculation of intersection is different for point grids and polygon grids, we have subclasses <a class="reference internal" href="generated/wradlib.zonalstats.ZonalDataPoly.html#wradlib.zonalstats.ZonalDataPoly" title="wradlib.zonalstats.ZonalDataPoly"><code class="xref py py-class docutils literal"><span class="pre">ZonalDataPoly</span></code></a> and <a class="reference internal" href="generated/wradlib.zonalstats.ZonalDataPoint.html#wradlib.zonalstats.ZonalDataPoint" title="wradlib.zonalstats.ZonalDataPoint"><code class="xref py py-class docutils literal"><span class="pre">ZonalDataPoint</span></code></a>.</p>
+<p>Basically, <a class="reference internal" href="generated/wradlib.zonalstats.ZonalDataBase.html#wradlib.zonalstats.ZonalDataBase" title="wradlib.zonalstats.ZonalDataBase"><code class="xref py py-class docutils literal"><span class="pre">ZonalDataBase</span></code></a> encapsulates three <a class="reference internal" href="generated/wradlib.zonalstats.DataSource.html#wradlib.zonalstats.DataSource" title="wradlib.zonalstats.DataSource"><code class="xref py py-class docutils literal"><span class="pre">DataSource</span></code></a> objects:</p>
+<blockquote>
+<div><ul class="simple">
+<li>source grid (points/polygons)</li>
+<li>target polygons</li>
+<li>destination (intersection) (points/polygons)</li>
+</ul>
+</div></blockquote>
+<p>The destination DataSource object is created from the provided source grid and target polygons at initialisation time.</p>
+<p>As an example the creation of a <a class="reference internal" href="generated/wradlib.zonalstats.ZonalDataPoly.html#wradlib.zonalstats.ZonalDataPoly" title="wradlib.zonalstats.ZonalDataPoly"><code class="xref py py-class docutils literal"><span class="pre">ZonalDataPoly</span></code></a> class instance is shown:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># setup test grid and catchment</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="mf">7.071664</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">50.730521</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="mi">1000</span> <span class="o">+</span> <span class="mi">50</span> <span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">rays</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># create polar grid polygon vertices in lat,lon</span>
+<span class="n">radar_ll</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">georef</span><span class="o">.</span><span class="n">polar2polyvert</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">))</span>
+
+<span class="c1"># setup OSR objects</span>
+<span class="n">proj_gk</span> <span class="o">=</span> <span class="n">osr</span><span class="o">.</span><span class="n">SpatialReference</span><span class="p">()</span>
+<span class="n">proj_gk</span><span class="o">.</span><span class="n">ImportFromEPSG</span><span class="p">(</span><span class="mi">31466</span><span class="p">)</span>
+<span class="n">proj_ll</span> <span class="o">=</span> <span class="n">osr</span><span class="o">.</span><span class="n">SpatialReference</span><span class="p">()</span>
+<span class="n">proj_ll</span><span class="o">.</span><span class="n">ImportFromEPSG</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span>
+
+<span class="c1"># project ll grids to GK2</span>
+<span class="n">radar_gk</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">georef</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="n">radar_ll</span><span class="p">,</span> <span class="n">projection_source</span><span class="o">=</span><span class="n">proj_ll</span><span class="p">,</span>
+                            <span class="n">projection_target</span><span class="o">=</span><span class="n">proj_gk</span><span class="p">)</span>
+
+<span class="c1"># reshape</span>
+<span class="n">radar_gk</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">rays</span> <span class="o">*</span> <span class="n">bins</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">box0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2600000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">],[</span><span class="mf">2600000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2600000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">]])</span>
+
+<span class="n">box1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">],[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2620000.</span><span class="p">,</span> <span class="mf">5640000.</span><span class="p">],[</span><span class="mf">2620000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">],</span>
+                 <span class="p">[</span><span class="mf">2610000.</span><span class="p">,</span> <span class="mf">5630000.</span><span class="p">]])</span>
+
+<span class="n">targets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">box0</span><span class="p">,</span> <span class="n">box1</span><span class="p">])</span>
+
+<span class="n">zdpoly</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">ZonalDataPoly</span><span class="p">(</span><span class="n">radar_gk</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">srs</span><span class="o">=</span><span class="n">proj_gk</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When calculationg the intersection, also weights are calculated for every source grid feature and attributed to the destination features.</p>
+<p>With the property <code class="docutils literal"><span class="pre">isecs</span></code> it is possible to retrieve the intersection geometries as numpy array, further get-functions add to the functionality:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># get intersections as numpy array</span>
+<span class="n">isecs</span> <span class="o">=</span> <span class="n">zdpoly</span><span class="o">.</span><span class="n">isecs</span><span class="p">()</span>
+<span class="c1"># get intersections for target polygon 0</span>
+<span class="n">isec0</span> <span class="o">=</span> <span class="n">zdpoly</span><span class="o">.</span><span class="n">get_isec</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># get source indices referring to target polygon 0</span>
+<span class="n">ind0</span> <span class="o">=</span> <span class="n">zdpoly</span><span class="o">.</span><span class="n">get_source_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are import/export functions using <code class="docutils literal"><span class="pre">ESRI</span> <span class="pre">Shapefile</span></code> as data format. Next export and import is shown:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">zdpoly</span><span class="o">.</span><span class="n">dump_vector</span><span class="p">(</span><span class="s1">&#39;test_zdpoly&#39;</span><span class="p">)</span>
+<span class="n">zdpoly_new</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">ZonalDataPoly</span><span class="p">(</span><span class="s1">&#39;test_zdpoly&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>ZonalStats<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>For ZonalStats the <a class="reference internal" href="generated/wradlib.zonalstats.ZonalStatsBase.html#wradlib.zonalstats.ZonalStatsBase" title="wradlib.zonalstats.ZonalStatsBase"><code class="xref py py-class docutils literal"><span class="pre">ZonalStatsBase</span></code></a> class and the two subclasse <a class="reference internal" href="generated/wradlib.zonalstats.GridCellsToPoly.html#wradlib.zonalstats.GridCellsToPoly" title="wradlib.zonalstats.GridCellsToPoly"><code class="xref py py-class docutils literal"><span class="pre">GridCellsToPoly</span></code></a> and <a class="reference internal" href="generated/wradlib.zonalstats.GridPointsToPoly.html#wradlib.zonalstats.GridPointsToPoly" title="wradlib.zonalstats.GridPointsToPoly"><code class="xref py py-class docutils literal"><span class="pre">GridPointsToPoly</span></code></a> are available. ZonalStatsBase encapsulates one ZonalData object. Properties for simple access of ZonalData, intersection indices and weights are provided:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># create GridCellsToPoly instance</span>
+<span class="n">gc</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">GridCellsToPoly</span><span class="p">(</span><span class="n">zdpoly_new</span><span class="p">)</span>
+<span class="c1"># create some artificial data for processing using the features indices</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">radar_gk</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="mf">1000000.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+<span class="c1"># calculate mean and variance</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will add <code class="docutils literal"><span class="pre">mean</span></code> and <code class="docutils literal"><span class="pre">var</span></code> attributes to the target DataSource. This can be used to export the resulting zonal statistics to vector and raster files:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># export to vector GeoJSON</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">zdata</span><span class="o">.</span><span class="n">trg</span><span class="o">.</span><span class="n">dump_vector</span><span class="p">(</span><span class="s1">&#39;test_zonal_json.geojson&#39;</span><span class="p">,</span> <span class="s1">&#39;GeoJSON&#39;</span><span class="p">)</span>
+<span class="c1"># export &#39;mean&#39; to raster netCDF</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">zdata</span><span class="o">.</span><span class="n">trg</span><span class="o">.</span><span class="n">dump_raster</span><span class="p">(</span><span class="s1">&#39;test_zonal_hdr.nc&#39;</span><span class="p">,</span> <span class="s1">&#39;netCDF&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">pixel_size</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The ZonalStats classes can also be used without any ZonalData by instantiating with precalculated index and weight values. Be sure to use matching ix, w and data arrays:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># get ix, and weight arrays</span>
+<span class="n">ix</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">ix</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">w</span>
+<span class="c1"># instantiate new ZonlaStats object</span>
+<span class="n">gc1</span> <span class="o">=</span> <span class="n">wrl</span><span class="o">.</span><span class="n">zonalstats</span><span class="o">.</span><span class="n">GridCellsToPoly</span><span class="p">(</span><span class="n">ix</span><span class="o">=</span><span class="n">ix</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">)</span>
+<span class="c1"># caclulate statistics</span>
+<span class="n">avg</span> <span class="o">=</span> <span class="n">gc1</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">gc1</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/tutorial_zonal_statistics.py">This extensive example</a> shows creation of Zonal Statistics from RADOLAN Data:</p>
+<blockquote>
+<div><p>(<a class="reference external" href="./pyplots/tutorial_zonal_statistics.py">Source code</a>)</p>
+<div class="figure" id="id2">
+<img alt="_images/tutorial_zonal_statistics_01_00.png" src="_images/tutorial_zonal_statistics_01_00.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_01_00.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id3">
+<img alt="_images/tutorial_zonal_statistics_01_01.png" src="_images/tutorial_zonal_statistics_01_01.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_01_01.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id4">
+<img alt="_images/tutorial_zonal_statistics_01_02.png" src="_images/tutorial_zonal_statistics_01_02.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_01_02.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id5">
+<img alt="_images/tutorial_zonal_statistics_01_03.png" src="_images/tutorial_zonal_statistics_01_03.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_01_03.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id6">
+<img alt="_images/tutorial_zonal_statistics_01_04.png" src="_images/tutorial_zonal_statistics_01_04.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_01_04.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id7">
+<img alt="_images/tutorial_zonal_statistics_01_05.png" src="_images/tutorial_zonal_statistics_01_05.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_01_05.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id8">
+<img alt="_images/tutorial_zonal_statistics_01_06.png" src="_images/tutorial_zonal_statistics_01_06.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_01_06.png">png</a>)</span></p>
+</div>
+</div></blockquote>
+<p><a class="reference external" href="https://github.com/wradlib/wradlib/blob/master/examples/tutorial_zonal_statistics_polar.py">This second example</a> shows creation of Zonal Statistics from Radar Data:</p>
+<blockquote>
+<div><p>(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_polar.py">Source code</a>)</p>
+<div class="figure" id="id9">
+<img alt="_images/tutorial_zonal_statistics_polar_01_00.png" src="_images/tutorial_zonal_statistics_polar_01_00.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_polar_01_00.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id10">
+<img alt="_images/tutorial_zonal_statistics_polar_01_01.png" src="_images/tutorial_zonal_statistics_polar_01_01.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_polar_01_01.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id11">
+<img alt="_images/tutorial_zonal_statistics_polar_01_02.png" src="_images/tutorial_zonal_statistics_polar_01_02.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_polar_01_02.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id12">
+<img alt="_images/tutorial_zonal_statistics_polar_01_03.png" src="_images/tutorial_zonal_statistics_polar_01_03.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_polar_01_03.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id13">
+<img alt="_images/tutorial_zonal_statistics_polar_01_04.png" src="_images/tutorial_zonal_statistics_polar_01_04.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_polar_01_04.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id14">
+<img alt="_images/tutorial_zonal_statistics_polar_01_05.png" src="_images/tutorial_zonal_statistics_polar_01_05.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_polar_01_05.png">png</a>)</span></p>
+</div>
+<div class="figure" id="id15">
+<img alt="_images/tutorial_zonal_statistics_polar_01_06.png" src="_images/tutorial_zonal_statistics_polar_01_06.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="./pyplots/tutorial_zonal_statistics_polar_01_06.png">png</a>)</span></p>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="recipes.html" class="btn btn-neutral float-right" title="Recipes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_radolan_format.html" class="btn btn-neutral" title="RADOLAN" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016, wradlib developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.8.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

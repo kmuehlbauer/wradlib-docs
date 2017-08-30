@@ -1,0 +1,6 @@
+wradlib\.georef\.beam\_height\_n
+================================
+
+.. currentmodule:: wradlib.georef
+
+.. autofunction:: beam_height_n

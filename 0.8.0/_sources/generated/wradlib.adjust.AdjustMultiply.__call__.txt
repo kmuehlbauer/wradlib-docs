@@ -1,0 +1,6 @@
+wradlib.adjust.AdjustMultiply.__call__
+======================================
+
+.. currentmodule:: wradlib.adjust
+
+.. automethod:: AdjustMultiply.__call__

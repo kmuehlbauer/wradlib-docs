@@ -1,0 +1,6 @@
+wradlib\.io\.read\_GAMIC\_hdf5
+==============================
+
+.. currentmodule:: wradlib.io
+
+.. autofunction:: read_GAMIC_hdf5

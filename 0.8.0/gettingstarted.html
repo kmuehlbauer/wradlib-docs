@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; wradlib</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/wradlib.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="wradlib" href="index.html"/>
+        <link rel="next" title="Tutorials" href="tutorials.html"/>
+        <link rel="prev" title="wradlib: An Open Source Library for Weather Radar Data Processing" href="index.html"/>
+    
+    <link href="_static/wradlib.css" rel="stylesheet" type="text/css">
+
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+  <a href="index.html" class="icon icon-home"> wradlib
+
+
+
+</a>
+
+
+
+  <div class="version">
+    
+    <button class="verbtn">0.8.0</button>
+    <div class="version-content">
+      
+        <a href="../latest/">latest</a>
+        <a href="../0.8.0/">0.8.0</a>
+        <a href="../0.7.6/">0.7.6</a>
+        <a href="../0.7.0/">0.7.0</a>
+        <a href="../0.6.0/">0.6.0</a>
+    </div>
+  </div>
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bleeding-edge-code">Bleeding edge code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-under-windows">Installation under Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-under-linux">Installation under Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-manually">Installing Manually</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-via-easy-install">Installing via easy_install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#satisfying-wradlib-dependencies-using-apt-get-on-ubuntu-12-04-lts-precise-pangolin">Satisfying wradlib dependencies using apt-get on Ubuntu 12.04 LTS (precise pangolin)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-easy-install">1. Getting easy_install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numpy-scipy-and-matplotlib">2. NumPy, SciPy and Matplotlib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-formats-hdf5-and-netcdf4">3. Data Formats: HDF5 and NetCDF4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#georeferencing">4. georeferencing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wradlib">5. wradlib</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#community">Community</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recipes.html">Recipes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Library Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_setup.html">For Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zreferences.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">wradlib</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/gettingstarted.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bleeding-edge-code">
+<h2>Bleeding edge code<a class="headerlink" href="#bleeding-edge-code" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The wradlib version on <a class="reference external" href="https://pypi.python.org/pypi/wradlib">PyPI</a> might lag behind the actual developments. You can use the bleeding edge code from the <a class="reference external" href="https://github.com/wradlib/wradlib">wradlib repository</a>. Note, however, that you need to make sure yourself that all <a class="reference internal" href="#dependencies">Dependencies</a> are met (see below).</p>
+</div>
+<p><a class="reference external" href="https://github.com/wradlib/wradlib/archive/master.zip">Download</a> the source, unzip, and run:</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p>
+<p>Alternatively, you can add the wradlib directory to your environment variable <code class="docutils literal"><span class="pre">PYTHONPATH</span></code>.</p>
+</div>
+<div class="section" id="installation-under-windows">
+<h2>Installation under Windows<a class="headerlink" href="#installation-under-windows" title="Permalink to this headline">¶</a></h2>
+<p>In order to run <em>wradlib</em>, you need to have a Python interpreter installed on your local computer, as well as a number of Python packages (<a class="reference internal" href="#dependencies">Dependencies</a>). We recommend to install <a class="reference external" href="https://python-xy.github.io/">Python(x,y)</a> as it installs Python, a number of required packages, and other useful tools (e.g. MinGW).</p>
+<p>Download and install the latest Python(x,y) distribution from <a class="reference external" href="https://python-xy.github.io/">https://python-xy.github.io/</a>.
+The latest distribution tested by us is <strong>Python(x,y)-2.7.9.0.exe</strong>.
+We recommend to use the full installation mode, because this will install all packages.
+Otherwise you have to make sure that all prerequisites mentioned below will be installed, which may not be the case with a standard installation.
+If you have administrative privileges, make sure you choose &#8220;All Users&#8221; under the &#8220;Install for&#8221; menu component.
+Installation for the current user only, may work, but may also produce all kinds of unexpected behavior.</p>
+<p>If your Python installation is working, the following command (in a DOS console) should work:</p>
+<p><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">python</span> <span class="pre">--version</span></code></p>
+<p>Now you can install wradlib. Open a DOS console window and type:</p>
+<p><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">easy_install</span> <span class="pre">wradlib</span></code></p>
+<p>Alternatively, you can install the <a class="reference internal" href="#bleeding-edge-code">Bleeding edge code</a>.</p>
+<p>Test the integrity of your wradlib installation by opening a console window and typing <code class="docutils literal"><span class="pre">&gt;python</span></code>. The Python prompt should appear. Then type</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">wradlib</span>
+</pre></div>
+</div>
+<p>If everything is ok, nothing will happen. If the <em>wradlib</em> package is not found by the interpreter, you will get</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">wradlib</span>
+<span class="go">ImportError: No module named wradlib</span>
+</pre></div>
+</div>
+<p><strong>Gotchas under Windows</strong></p>
+<p>If you do not install Python(x,y), you will need to make sure by yourself that everything is there: The Python interpreter (version 2.7) and all <a class="reference internal" href="#dependencies">Dependencies</a>. You can test the availability of the required tools by opening a DOS console and requesting the versions of the required software. For Python, it is important that the version is 2.7.x, for the other tools, the version number is not so important, but rather checks whether the software is available at all:</p>
+<p><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">python</span> <span class="pre">--version</span></code></p>
+<p>Ideally, all installations should be done with administrative privileges. In case you do not have administrative privileges, you can instll wradib via:</p>
+<p><code class="docutils literal"><span class="pre">&gt;</span> <span class="pre">easy_install</span> <span class="pre">wradlib</span> <span class="pre">--user</span></code></p>
+</div>
+<div class="section" id="installation-under-linux">
+<h2>Installation under Linux<a class="headerlink" href="#installation-under-linux" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-manually">
+<h3>Installing Manually<a class="headerlink" href="#installing-manually" title="Permalink to this headline">¶</a></h3>
+<p>This way no dependency checking is done and you need to make sure yourself that all dependencies (see below) are met.</p>
+<p><a class="reference external" href="https://github.com/wradlib/wradlib/archive/master.zip">Download the source</a>, unpack, go to the directory, where you unpacked the files and run:</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p>
+<p>This will install wradlib to your site-packages or dist-packages folder.</p>
+</div>
+<div class="section" id="installing-via-easy-install">
+<h3>Installing via easy_install<a class="headerlink" href="#installing-via-easy-install" title="Permalink to this headline">¶</a></h3>
+<p>Open a terminal and run:</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">easy_install</span> <span class="pre">wradlib</span></code></p>
+<p>Depending on your system you might need to be root (or sudo the above command) for this to work.
+easy_install will then fetch the source distribution from the Python Package Index and run the installation.</p>
+<p>Afterwards it will check for any dependencies not met, yet.</p>
+<p>Be aware that with easy_install we can only look for python-module dependencies.
+For example the numpy module itself depends on some other libraries, which need to be present in order for the module to compile properly after being downloaded by easy_install. We have no control over these dependencies and it is rather hard to give a complete overview.</p>
+<p>Therefore we recommend trying to satisfy the dependencies using your favorite package management system.</p>
+<p>Since python environments as Enthought Python or Anaconda Python have ermerged and matured in the past, we also recommend to use these environments.</p>
+<p>As an example we give all packages necessary to successfully install wradlib on a Ubuntu Linux 12.04 (thanks to Diego Civera from the wradlib-users mailing list for pioneering this).</p>
+</div>
+<div class="section" id="satisfying-wradlib-dependencies-using-apt-get-on-ubuntu-12-04-lts-precise-pangolin">
+<h3>Satisfying wradlib dependencies using apt-get on Ubuntu 12.04 LTS (precise pangolin)<a class="headerlink" href="#satisfying-wradlib-dependencies-using-apt-get-on-ubuntu-12-04-lts-precise-pangolin" title="Permalink to this headline">¶</a></h3>
+<p>If you want to get started very quickly and are not afraid to use third party repositories, then the following lines should get you going within minutes (the &#8216;$&#8217; prompt means that these commands should be issued on a terminal)</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">add-apt-repository</span> <span class="pre">ppa:adrian-m-benson/ppa</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python-setuptools</span> <span class="pre">python-numpy</span> <span class="pre">python-scipy</span> <span class="pre">python-matplotlib</span> <span class="pre">python-tables</span> <span class="pre">python-h5py</span> <span class="pre">python-netcdf4</span> <span class="pre">python-gdal</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">easy_install</span> <span class="pre">wradlib</span></code></div>
+</div>
+<p>We will break up the installation into several steps, in case something goes wrong along the way, or you would like to know better, what is happening.</p>
+<div class="section" id="getting-easy-install">
+<h4>1. Getting easy_install<a class="headerlink" href="#getting-easy-install" title="Permalink to this headline">¶</a></h4>
+<p>As there is no wradlib Debian package yet, the python-setuptools package gives you access to easy_install.</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python-setuptools</span></code></p>
+</div>
+<div class="section" id="numpy-scipy-and-matplotlib">
+<h4>2. NumPy, SciPy and Matplotlib<a class="headerlink" href="#numpy-scipy-and-matplotlib" title="Permalink to this headline">¶</a></h4>
+<p>NumPy and SciPy are needed for many algorithms and Matplotlib is used for visualization.</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python-numpy</span> <span class="pre">python-scipy</span> <span class="pre">python-matplotlib</span></code></p>
+</div>
+<div class="section" id="data-formats-hdf5-and-netcdf4">
+<h4>3. Data Formats: HDF5 and NetCDF4<a class="headerlink" href="#data-formats-hdf5-and-netcdf4" title="Permalink to this headline">¶</a></h4>
+<p>The two major packages for working with HDF5 files are h5py and PyTables</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python-h5py</span> <span class="pre">python-tables</span></code></p>
+<p>For NetCDF4, there are no official Debian Packages for Ubuntu 12.04</p>
+<div class="line-block">
+<div class="line">You have two options here.</div>
+<div class="line"><strong>EITHER</strong> You can try a user repository:</div>
+</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">add-apt-repository</span> <span class="pre">ppa:adrian-m-benson/ppa</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python-netcdf4</span></code></div>
+</div>
+<p><strong>OR</strong> you satisfy the source dependencies of python-netcdf4 and let easy_install do the rest:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libnetcdf-dev</span> <span class="pre">libhdf5-dev</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">easy_install</span> <span class="pre">netCDF4</span></code></div>
+</div>
+</div>
+<div class="section" id="georeferencing">
+<h4>4. georeferencing<a class="headerlink" href="#georeferencing" title="Permalink to this headline">¶</a></h4>
+<p>Projections, which are the main part of georeferencing are handled by the gdal package</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python-gdal</span></code></p>
+</div>
+<div class="section" id="wradlib">
+<h4>5. wradlib<a class="headerlink" href="#wradlib" title="Permalink to this headline">¶</a></h4>
+<p>Finally you can install wradlib.</p>
+<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">sudo</span> <span class="pre">easy_install</span> <span class="pre">wradlib</span></code></p>
+<p>This will install wradlib and all missing dependencies.</p>
+<p><strong>Gotchas under Linux</strong></p>
+<p>As of Ubuntu 12.04 numpydoc, which is needed to build the source documentation of wradlib also does not have a Debian package. This will change in more current versions. As numpydoc seems to be purely written in python, easy_install should be able to install it without problems. However, numpydoc is not needed in order to use wradlib.</p>
+</div>
+</div>
+</div>
+<div class="section" id="dependencies">
+<span id="ref-dependencies"></span><h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p><em>wradlib</em> was not designed to be a self-contained library. Besides extensive use of Numpy and Scipy, <em>wradlib</em> uses additional libraries, which you will need to install before you can use <em>wradlib</em>. Note that all libraries marked with a (*) are <em>not</em> contained in the Python(x,y) distribution. Installers for the remaining libraries can be downloaded at <a class="reference external" href="https://python-xy.github.io/downloads.html">https://python-xy.github.io/downloads.html</a>.</p>
+<ul class="simple">
+<li>numpy, version &gt;= 1.6.1</li>
+<li>matplotlib, version &gt;= 1.1.0</li>
+<li>scipy, version &gt;= 0.9</li>
+<li>h5py, version &gt;= 2.0.1</li>
+<li>netCDF4, version &gt;= 1.0</li>
+<li>gdal, version &gt;= 1.9</li>
+</ul>
+<p>You can check whether the required <a class="reference internal" href="#dependencies">Dependencies</a> are available on your computer by opening a Python console and enter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+<span class="go">ImportError: No module named &lt;package_name&gt;</span>
+</pre></div>
+</div>
+<p>This will be the response in case the package is not available.</p>
+<p>In case the import is successful, you should also check the version number:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">package_name</span><span class="o">.</span><span class="n">__version__</span>
+<span class="go">some version number</span>
+</pre></div>
+</div>
+<p>The version number should be consistent with the above <a class="reference internal" href="#dependencies">Dependencies</a>.</p>
+</div>
+<div class="section" id="optional-dependencies">
+<h2>Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Apart from the obligatory <a class="reference internal" href="#dependencies">Dependencies</a>, some dependencies in wradlib are optional. This is because the installation of these dependencies can be somewhat tedious while many wradlib users will not need them anyway. In case users use a wradlib function that requires an optional dependency, and this dependency is not satisfied in the local environment, wradlib will raise an exception.</p>
+<p>As for now, the following dependencies are defined as optional:</p>
+<p><strong>The speedup module</strong></p>
+<p>The speedup module is intended as a collection of Fortran code in order to speed up specific wradlib function that are critical for performance.
+In order to build the speedup module as a shared library, you need to use f2py (<a class="reference external" href="https://sysbio.ioc.ee/projects/f2py2e/">https://sysbio.ioc.ee/projects/f2py2e/</a>). f2py usually ships with numpy and should be available via the command line. To test whether f2py is available on your system, execute <code class="docutils literal"><span class="pre">f2py</span></code> on the system console. Or, alternatively, <code class="docutils literal"><span class="pre">f2py.py</span></code>. If it is available, you should get a bunch of help instructions. Now change to the wradlib module directory and execute on the system console:</p>
+<p><code class="docutils literal"><span class="pre">f2py.py</span> <span class="pre">-c</span> <span class="pre">-m</span> <span class="pre">speedup</span> <span class="pre">speedup.f</span></code></p>
+<p>Now the speedup module should be availble.</p>
+<p><strong>xmltodict</strong></p>
+<p>We use xmltodict to convert the Rainbow Data Files (which have an metadata XML header) to an ordered dict.</p>
+</div>
+<div class="section" id="known-issues">
+<span id="ref-knownissues"></span><h2>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<p>Depending on your OS and installation method you may encounter different problems. Here are some guidelines for attacking them.</p>
+<p>Generally it is a good idea to use your systems package manager to install the dependencies. This will also take account for other needed bindings, libs etc. Windows user should install one of the (scientific) python packages to resolve the problems there.</p>
+<p>You may install the requirements via pip for all requirements:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+</pre></div>
+</div>
+<p>or for any requirement itself:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install &#39;numpy&gt;=1.7.1&#39;
+</pre></div>
+</div>
+<p>If you are installing wradlib and the missing dependencies via pip or setup.py there may be missing some libraries and/or include (&#8216;header&#8217;) files. The only solutions to this is to install the missing libraries via packet manager or compile them from scratch (windows user using the python packages should not encounter such problems).</p>
+<p>If you are installing wradlib and the missing dependencies via pip or setup.py there also may be version conflicts between the packages, some libraries and/or include (&#8216;header&#8217;) files. If, for instance, the newest available gdal-devel libraries which come with your system are version 1.10.0, but gdal version downloaded from PyPI is 1.11.0, then this may have an error at compile time as a result. Solution is to explicitely declare the gdal version:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install &#39;gdal==1.10.0&#39;
+</pre></div>
+</div>
+<p>This may also be an issue with other dependencies which are relying on libraries.</p>
+<p>If you are in need to install everything from scratch, or if you are setting up a clean virtual environment, etc., you may encounter some other strange problems. Especially in virtual environments you may have to export some PATH variables so that libraries and includes can be found.</p>
+<p>If all this doesn&#8217;t help, check on your favorite search engine or create an issue <a class="reference external" href="https://github.com/wradlib/wradlib/issues">here</a> with details on the problem or send an email on the <a class="reference external" href="https://groups.google.com/forum/?fromgroups=#!forum/wradlib-users">wradlib-users</a> mailing list.</p>
+</div>
+<div class="section" id="community">
+<h2>Community<a class="headerlink" href="#community" title="Permalink to this headline">¶</a></h2>
+<p><em>wradlib</em> is intended to be a community effort, and community needs communication. The key communication platform for <em>wradlib</em> is the  <a class="reference external" href="https://groups.google.com/forum/?fromgroups=#!forum/wradlib-users">wradlib-users</a> mailing list and forum. Through this forum, you can help to improve wradlib by reporting bugs, proposing enhancements, or by contributing code snippets (in any programming language) and documentation of algorithms. You can also ask other users and developers for help, or use your own knowledge and experience to help other users. We strongly encourage you to <a class="reference external" href="https://groups.google.com/forum/#!forum/wradlib-users/join">subscribe</a> to this list. Check it out!</p>
+<p>Learn more about wradlib as a community effort <a class="reference internal" href="community.html"><em>here</em></a>!</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="wradlib: An Open Source Library for Weather Radar Data Processing" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2011-2016, wradlib developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.8.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
