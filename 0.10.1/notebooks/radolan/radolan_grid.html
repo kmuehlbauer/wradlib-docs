@@ -431,7 +431,7 @@ defined as coordinate system origin. Then all ccordinates can be
 calculated with the known grid-spacing d as:</p>
 <p>with i, j as cartesian indices.</p>
 <p><span class="math">\(\omega radlib\)</span> provides the convenience function
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.get_radolan_grid.html">wradlib.georef.get_radolan_grid()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.georef.get_radolan_grid.html">wradlib.georef.get_radolan_grid()</a>
 which returns the radolan grid for further processing. It takes
 <code class="docutils literal"><span class="pre">nrows</span></code> and <code class="docutils literal"><span class="pre">ncols</span></code> as parameters and returns the projected
 cartesian coordinates or the wgs84 coordinates (keyword arg wgs84=True)
@@ -514,7 +514,7 @@ GDAL/OSR. It has to be changed to the known
 <p>With these adaptions we finally yield the Radolan Projection as
 WKT-string. This WKT-string is used within <span class="math">\(\omega radlib\)</span> to
 create the osr-object by using the helper-function
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.create_osr.html">wradlib.georef.create_osr()</a>.</p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.georef.create_osr.html">wradlib.georef.create_osr()</a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [5]:
@@ -561,7 +561,7 @@ PROJCS[&#34;Radolan projection&#34;,
 </div>
 <p>This PROJ.4-string can also be used to create the osr-object by using
 the helper-function
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.proj4_to_osr.html">wradlib.georef.proj4_to_osr()</a>:</p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.georef.proj4_to_osr.html">wradlib.georef.proj4_to_osr()</a>:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [6]:
@@ -601,7 +601,7 @@ PROJCS[&#34;unnamed&#34;,
 <div class="section" id="Grid-Reprojection">
 <h2>Grid Reprojection<a class="headerlink" href="#Grid-Reprojection" title="Permalink to this headline">¶</a></h2>
 <p>Within <span class="math">\(\omega radlib\)</span> the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.reproject.html">wradlib.georef.reproject()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.georef.reproject.html">wradlib.georef.reproject()</a>
 function can be used to convert the radolan grid data from xy-space to
 lonlat-space and back. First, we need to create the necessary Spatial
 Reference Objects for the RADOLAN-projection and wgs84.</p>

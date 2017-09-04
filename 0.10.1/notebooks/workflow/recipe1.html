@@ -401,21 +401,21 @@ German Weather Service (DWD). The processing includes:</p>
 <li><em>(1)</em> Reading local
 <a class="reference internal" href="../fileio/wradlib_radar_formats.html#German-Weather-Service:-DX-format"><span class="std std-ref">DX-Data</span></a>
 for radars Feldberg and Tuerkheim.</li>
-<li><em>(2)</em> Clutter correction using the <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/clutter.html">Gabella filter
+<li><em>(2)</em> Clutter correction using the <a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/clutter.html">Gabella filter
 algorithm</a>.</li>
-<li><em>(3)</em> Attenuation correction using the <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/atten.html">Kraemer
+<li><em>(3)</em> Attenuation correction using the <a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/atten.html">Kraemer
 algorithm</a>.</li>
-<li><em>(4)</em> Conversion from reflectivity to rainfall using the <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/zr.html">Z-R
+<li><em>(4)</em> Conversion from reflectivity to rainfall using the <a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/zr.html">Z-R
 Conversions</a> module.</li>
 <li><em>(5)</em> Accumulation of rainfall depths over the entire event.</li>
 <li><em>(6)</em>
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/comp.html">Composition</a> of
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/comp.html">Composition</a> of
 data from both radars to a common Cartesian grid (Gauss Krueger Zone
 3). Composition is based on a weighted combination, using the
-sampling volume as a <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/qual.html">quality
+sampling volume as a <a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/qual.html">quality
 criterion</a></li>
 <li><em>(7)</em> Plotting a rainfall map using
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/vis.html">cartesian_plot</a></li>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/vis.html">cartesian_plot</a></li>
 </ul>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>

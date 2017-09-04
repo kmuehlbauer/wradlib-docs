@@ -379,7 +379,7 @@ other layers.</p>
 </pre></div>
 </div>
 <p>We facilitate the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_raster_data.html">wradlib.io.read_raster_data()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.io.read_raster_data.html">wradlib.io.read_raster_data()</a>
 function and resample the data to a (lon/lat) <code class="docutils literal"><span class="pre">spacing=0.005</span></code>.</p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
@@ -429,9 +429,9 @@ Format</a> from <a class="reference external" href="http://www.naturalearthdata.
 Data</a>.</p>
 <p>For extraction of the data we use an <code class="docutils literal"><span class="pre">OGR.Layer</span></code> <code class="docutils literal"><span class="pre">AttributeFilter</span></code>
 and the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.get_shape_coordinates.html">wradlib.georef.get_shape_coordinates()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.georef.get_shape_coordinates.html">wradlib.georef.get_shape_coordinates()</a>
 function. The data is then added via
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.add_lines.html">wradlib.vis.add_lines()</a></p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.vis.add_lines.html">wradlib.vis.add_lines()</a></p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
 <span></span>In [3]:
@@ -500,9 +500,9 @@ Agriculture Organization of the United Nations
 and <a class="reference external" href="http://www.naturalearthdata.com/">Natural Earth Data</a></p>
 <p>For extraction of the data we use <code class="docutils literal"><span class="pre">OGR.Layer</span></code> <code class="docutils literal"><span class="pre">SpatialFilter</span></code> and
 the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.get_shape_coordinates.html">wradlib.georef.get_shape_coordinates()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.georef.get_shape_coordinates.html">wradlib.georef.get_shape_coordinates()</a>
 function. The data is then added via
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.add_lines.html">wradlib.vis.add_lines()</a></p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.vis.add_lines.html">wradlib.vis.add_lines()</a></p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
 <span></span>In [4]:
@@ -661,9 +661,9 @@ functions.</p>
 The data from <a class="reference external" href="http://www.naturalearthdata.com/">Natural Earth Data</a>
 is used again.</p>
 <p>The patches are read using OGR.Layer <code class="docutils literal"><span class="pre">SpatialFilter</span></code> and
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.get_shape_coordinates.html">wradlib.georef.get_shape_coordinates()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.georef.get_shape_coordinates.html">wradlib.georef.get_shape_coordinates()</a>
 function. The patches are added one by one to the map via
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.add_patches.html">wradlib.vis.add_patches()</a>.</p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.vis.add_patches.html">wradlib.vis.add_patches()</a>.</p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
 <span></span>In [7]:
@@ -724,11 +724,11 @@ function. The patches are added one by one to the map via
 <h3>Plotting as Projection Map<a class="headerlink" href="#Plotting-as-Projection-Map" title="Permalink to this headline">¶</a></h3>
 <p>This example shows how to plot countries as patches on a projected map.</p>
 <p>The patches are read using OGR.Layer <code class="docutils literal"><span class="pre">AttributeFilter</span></code> and
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.get_shape_coordinates.html">wradlib.georef.get_shape_coordinates()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.georef.get_shape_coordinates.html">wradlib.georef.get_shape_coordinates()</a>
 function. The data is transformed to the wanted projection by giving the
 projection OSR (Spatial Reference) with the keyword argument
 <code class="docutils literal"><span class="pre">dest_srs</span></code>. The patches are added as an array of patches to the map
-via<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.add_patches.html">wradlib.vis.add_patches()</a>.</p>
+via<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.vis.add_patches.html">wradlib.vis.add_patches()</a>.</p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
 <span></span>In [8]:

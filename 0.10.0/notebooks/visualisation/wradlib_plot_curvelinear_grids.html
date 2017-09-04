@@ -418,11 +418,11 @@ range bins.</p>
 <h2>Create Curvelinear Grid<a class="headerlink" href="#Create-Curvelinear-Grid" title="Permalink to this headline">¶</a></h2>
 <p>The creation process of the curvelinear grid is bundled in the helper
 function
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>.
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>.
 I will not dwell too much on that, just this far
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>
 uses a derived Axes implementation.</p>
-<p><a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>
+<p><a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>
 takes scan type (&#8216;PPI&#8217; or &#8216;RHI&#8217;) as argument, figure object and grid
 definition are optional. The grid creation process generates three axes
 objects and set some reasonable starting values for labeling.</p>
@@ -436,7 +436,7 @@ which holds the angle-range-grid</li>
 axes object for plotting polar data</li>
 </ul>
 <p>A typical invocation of
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>
 for a <strong>PPI</strong> is:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># create curvelinear axes</span>
 <span class="n">cgax</span><span class="p">,</span> <span class="n">caax</span><span class="p">,</span> <span class="n">paax</span> <span class="o">=</span> <span class="n">create_cg</span><span class="p">(</span><span class="s1">&#39;PPI&#39;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">subplot</span><span class="p">)</span>
@@ -444,9 +444,9 @@ for a <strong>PPI</strong> is:</p>
 </div>
 <p>For plotting actual polar data two functions exist, depending on whether
 your data holds a <strong>PPI</strong>
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.plot_ppi.html">wradlib.vis.plot_ppi()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.plot_ppi.html">wradlib.vis.plot_ppi()</a>
 or an <strong>RHI</strong>
-(<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.plot_rhi.html">wradlib.vis.plot_rhi()</a>).</p>
+(<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.plot_rhi.html">wradlib.vis.plot_rhi()</a>).</p>
 <div class="admonition note">
 <strong>Note</strong> 1. Other than most plotting functions you cannot give an axes
 object as an argument. All necessary axes objects are created on the
@@ -454,17 +454,17 @@ fly. You may give an figure object and/or an subplot specification as
 parameter. For further information on howto plot multiple cg plots in
 one figure, have a look at the special section <a class="reference external" href="#Plotting-on-Grids">Plotting on
 Grids</a>. 2. When using the <code class="docutils literal"><span class="pre">refrac</span></code> keyword with
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.plot_rhi.html">wradlib.vis.plot_rhi()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.plot_rhi.html">wradlib.vis.plot_rhi()</a>
 the data is plotted to the cartesian axis <code class="docutils literal"><span class="pre">caax</span></code>.</div>
 <div class="admonition note">
 <strong>Seealso</strong> -
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>
 -
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.plot_ppi.html">wradlib.vis.plot_ppi()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.plot_ppi.html">wradlib.vis.plot_ppi()</a>
 -
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.plot_rhi.html">wradlib.vis.plot_rhi()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.plot_rhi.html">wradlib.vis.plot_rhi()</a>
 If you want to learn more about the matplotlib features used with
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>,
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg()</a>,
 have a look into - <a class="reference external" href="http://matplotlib.org/mpl_toolkits/axes_grid/users/axisartist.html">Matplotlib AXISARTIST
 namespace</a>
 - <a class="reference external" href="http://matplotlib.org/mpl_toolkits/axes_grid/index.html">Matplotlib AxesGrid
@@ -476,7 +476,7 @@ Guide</a></div>
 <h2>Plotting on Curvelinear Grids<a class="headerlink" href="#Plotting-on-Curvelinear-Grids" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="Plot-CG-PPI">
 <h3>Plot CG PPI<a class="headerlink" href="#Plot-CG-PPI" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.plot_ppi.html">wradlib.vis.plot_ppi()</a>
+<p><a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.plot_ppi.html">wradlib.vis.plot_ppi()</a>
 with keyword <code class="docutils literal"><span class="pre">cg=True</span></code> is used in this section.</p>
 <div class="section" id="Simple-CG-PPI">
 <h4>Simple CG PPI<a class="headerlink" href="#Simple-CG-PPI" title="Permalink to this headline">¶</a></h4>
@@ -833,7 +833,7 @@ ticklabels of the cartesian axes. With little effort we got a better
 </div>
 <div class="section" id="Plot-CG-RHI">
 <h2>Plot CG RHI<a class="headerlink" href="#Plot-CG-RHI" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.plot_rhi.html">wradlib.vis.plot_rhi()</a>
+<p><a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.vis.plot_rhi.html">wradlib.vis.plot_rhi()</a>
 is used in this section. An CG RHI plot is a little different compared
 to an CG PPI plot. I covers only one quadrant and the data is plottet
 counterclockwise from &#8220;east&#8221; (3 o&#8217;clock) to &#8220;north&#8221; (12 o&#8217;clock).</p>
@@ -1016,7 +1016,7 @@ maximum intensity projection:</p>
 </pre></div>
 </div>
 <p>OK, we have to create the mip data, we use the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.util.maximum_intensity_projection.html">wradlib.util.maximum_intensity_projection()</a>:</p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.util.maximum_intensity_projection.html">wradlib.util.maximum_intensity_projection()</a>:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [12]:

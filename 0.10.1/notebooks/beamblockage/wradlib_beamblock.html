@@ -456,9 +456,9 @@ Bonn</em>).</p>
 </div>
 <p>We use</p>
 <ul class="simple">
-<li><a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.sweep_centroids.html">wradlib.georef.sweep_centroids</a>
+<li><a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.georef.sweep_centroids.html">wradlib.georef.sweep_centroids</a>
 and</li>
-<li><a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.polar2lonlatalt_n.html">wradlib.georef.polar2lonlatalt_n</a></li>
+<li><a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.georef.polar2lonlatalt_n.html">wradlib.georef.polar2lonlatalt_n</a></li>
 </ul>
 <p>to calculate the spherical coordinates of the bin centroids and their
 longitude, latutude and altitude.</p>
@@ -529,9 +529,9 @@ Radar bounding box:
 (from GTOPO30) and the finer resolution <code class="docutils literal"><span class="pre">bonn_new.tif</span></code> (from the SRTM
 mission).</p>
 <p>The DEM raster data is opened via
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.open_raster.html">wradlib.io.open_raster</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.io.open_raster.html">wradlib.io.open_raster</a>
 and extracted via
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.extract_raster_dataset.html">wradlib.georef.extract_raster_dataset</a>.</p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.georef.extract_raster_dataset.html">wradlib.georef.extract_raster_dataset</a>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [8]:
@@ -560,7 +560,7 @@ and extracted via
 <div class="section" id="Calculate-Beam-Blockage">
 <h2>Calculate Beam-Blockage<a class="headerlink" href="#Calculate-Beam-Blockage" title="Permalink to this headline">¶</a></h2>
 <p>Now we can finally apply the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.qual.beam_block_frac.html">wradlib.qual.beam_block_frac</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.qual.beam_block_frac.html">wradlib.qual.beam_block_frac</a>
 function to calculate the PBB.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
@@ -586,7 +586,7 @@ function to calculate the PBB.</p>
 <p>But we need to into account that the radar signal travels along a beam.
 Cumulative beam blockage (CBB) in one bin along a beam will always be at
 least as high as the maximum PBB of the preceeding bins (see
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.qual.cum_beam_block_frac.html">wradlib.qual.cum_beam_block_frac</a>)</p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.qual.cum_beam_block_frac.html">wradlib.qual.cum_beam_block_frac</a>)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [10]:
@@ -728,7 +728,7 @@ the height ticks at nice position.</p>
 </div>
 <ul class="simple">
 <li>The
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg</a>-function
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.vis.create_cg.html">wradlib.vis.create_cg</a>-function
 is facilitated to create the curved geometries.</li>
 <li>The actual data is plottet as (theta, range) on the parasite axis.</li>
 <li>Some tweaking is needed to get the final plot look nice.</li>

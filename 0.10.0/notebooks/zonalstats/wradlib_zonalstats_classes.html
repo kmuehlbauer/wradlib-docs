@@ -397,7 +397,7 @@ div.nboutput div.output_area.stderr {
 <div class="section" id="Zonal-Statistics">
 <h1>Zonal Statistics<a class="headerlink" href="#Zonal-Statistics" title="Permalink to this headline">¶</a></h1>
 <p>The
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/zonalstats.html">wradlib.zonalstats</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/zonalstats.html">wradlib.zonalstats</a>
 module provides classes and functions for calculation of zonal
 statistics for data on arbitrary grids and projections.</p>
 <p>It provides classes for:</p>
@@ -432,7 +432,7 @@ attributes</li>
 <div class="section" id="DataSource">
 <h2>DataSource<a class="headerlink" href="#DataSource" title="Permalink to this headline">¶</a></h2>
 <p>The
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.DataSource.html">wradlib.zonalstats.DataSource</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.DataSource.html">wradlib.zonalstats.DataSource</a>
 class handles point or polygon vector data by wrapping ogr.DataSource
 with special functions.</p>
 <p>The following example shows how to create different DataSource objects:</p>
@@ -526,12 +526,12 @@ The property <code class="docutils literal"><span class="pre">data</span></code>
 <p>Currently data can also be retrieved by:</p>
 <ul class="simple">
 <li>index -
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.DataSource.get_data_by_idx.html">wradlib.zonalstats.DataSource.get_data_by_idx()</a>,</li>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.DataSource.get_data_by_idx.html">wradlib.zonalstats.DataSource.get_data_by_idx()</a>,</li>
 <li>attribute -
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.DataSource.get_data_by_att.html">wradlib.zonalstats.DataSource.get_data_by_att()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.DataSource.get_data_by_att.html">wradlib.zonalstats.DataSource.get_data_by_att()</a>
 and</li>
 <li>geometry -
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.DataSource.get_data_by_geom.html">wradlib.zonalstats.DataSource.get_data_by_geom()</a>.</li>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.DataSource.get_data_by_geom.html">wradlib.zonalstats.DataSource.get_data_by_geom()</a>.</li>
 </ul>
 <p>Now, with the DataSource being created, we can add/set attribute data of
 the features:</p>
@@ -606,18 +606,18 @@ Rasterize layers
 <h2>ZonalData<a class="headerlink" href="#ZonalData" title="Permalink to this headline">¶</a></h2>
 <p>ZonalData is usually available as georeferenced regular gridded data.
 Here the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.ZonalDataBase.html">wradlib.zonalstats.ZonalDataBase</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.ZonalDataBase.html">wradlib.zonalstats.ZonalDataBase</a>
 class manages the grid data, the zonal data (target polygons) and the
 intersection data of source grid and target polygons. Because the
 calculation of intersection is different for point grids and polygon
 grids, we have subclasses
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.ZonalDataPoly.html">wradlib.zonalstats.ZonalDataPoly</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.ZonalDataPoly.html">wradlib.zonalstats.ZonalDataPoly</a>
 and
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.ZonalDataPoint.html">wradlib.zonalstats.ZonalDataPoint</a>.</p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.ZonalDataPoint.html">wradlib.zonalstats.ZonalDataPoint</a>.</p>
 <p>Basically,
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.ZonalDataBase.html">wradlib.zonalstats.ZonalDataBase</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.ZonalDataBase.html">wradlib.zonalstats.ZonalDataBase</a>
 encapsulates three
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.DataSource.html">wradlib.zonalstats.DataSource</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.DataSource.html">wradlib.zonalstats.DataSource</a>
 objects:</p>
 <ul class="simple">
 <li>source grid (points/polygons)</li>
@@ -627,7 +627,7 @@ objects:</p>
 <p>The destination DataSource object is created from the provided source
 grid and target polygons at initialisation time.</p>
 <p>As an example the creation of a
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.ZonalDataPoly.html">wradlib.zonalstats.ZonalDataPoly</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.ZonalDataPoly.html">wradlib.zonalstats.ZonalDataPoly</a>
 class instance is shown:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
@@ -713,7 +713,7 @@ functionality:</p>
 <p>There are import/export functions using <a class="reference external" href="https://de.wikipedia.org/wiki/Shapefile">ESRI-Shapfile
 Format</a> as data format. Next
 export and import is shown:
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.ZonalDataBase.html">wradlib.zonalstats.ZonalDataBase</a></p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.ZonalDataBase.html">wradlib.zonalstats.ZonalDataBase</a></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [9]:
@@ -729,11 +729,11 @@ export and import is shown:
 <div class="section" id="ZonalStats">
 <h2>ZonalStats<a class="headerlink" href="#ZonalStats" title="Permalink to this headline">¶</a></h2>
 <p>For ZonalStats the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.ZonalStatsBase.html">wradlib.zonalstats.ZonalStatsBase</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.ZonalStatsBase.html">wradlib.zonalstats.ZonalStatsBase</a>
 class and the two subclasses
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.GridCellsToPoly.html">wradlib.zonalstats.GridCellsToPoly</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.GridCellsToPoly.html">wradlib.zonalstats.GridCellsToPoly</a>
 and
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.zonalstats.GridPointsToPoly.html">wradlib.zonalstats.GridPointsToPoly</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.0/generated/wradlib.zonalstats.GridPointsToPoly.html">wradlib.zonalstats.GridPointsToPoly</a>
 are available. ZonalStatsBase encapsulates one ZonalData object.
 Properties for simple access of ZonalData, intersection indices and
 weights are provided. The following code will add <code class="docutils literal"><span class="pre">mean</span></code> and <code class="docutils literal"><span class="pre">var</span></code>

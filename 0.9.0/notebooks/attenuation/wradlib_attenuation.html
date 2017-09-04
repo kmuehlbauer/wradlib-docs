@@ -350,11 +350,11 @@ reference measurements (e.g. from microwave links) should be used to
 constrain gate-by-gate procedures. However, such attenuation references
 are usually not available. <span class="math">\(\omega radlib\)</span> provides a pragmatic
 approach to constrain gate-by-gate correction procedures, inspired by
-the work of <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/zreferences.html#kraemer2008">Kraemer et al.,
+the work of <a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/zreferences.html#kraemer2008">Kraemer et al.,
 2008</a>.
 It turned out that these procedures can effectively reduce the error
 introduced by attenuation, and, at the same time, minimize instability
-issues <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/zreferences.html#jacobi2015">(Jacobi et al.,
+issues <a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/zreferences.html#jacobi2015">(Jacobi et al.,
 2015)</a>.</p>
 </div>
 <div class="section" id="The-Example-Event">
@@ -363,7 +363,7 @@ issues <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/
 2008, at 16:55 UTC, as observed by the DWD C-band radar on mount
 Feldberg.</p>
 <p>The data can be read by the following lines and then visualized by
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.vis.plot_ppi.html">wradlib.vis.plot_ppi()</a>:</p>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.vis.plot_ppi.html">wradlib.vis.plot_ppi()</a>:</p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
 <span></span>In [2]:
@@ -448,7 +448,7 @@ methods</a>.</p>
 <div class="section" id="Hitschfeld-and-Bordan">
 <h3>Hitschfeld and Bordan<a class="headerlink" href="#Hitschfeld-and-Bordan" title="Permalink to this headline">¶</a></h3>
 <p>First, we examine the behaviour of the &#8220;classical&#8221; unconstrained forward
-correction which is typically referred to <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/zreferences.html#hitschfeld1954">Hitschfeld et al.,
+correction which is typically referred to <a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/zreferences.html#hitschfeld1954">Hitschfeld et al.,
 1954)</a>,
 although Hitschfeld and Bordan themselves rejected this approach. The
 Path Integrated Attenuation (PIA) according to this approach can be
@@ -515,7 +515,7 @@ degree demonstrates a case of instability.</p>
 </div>
 <div class="section" id="Harrison">
 <h3>Harrison<a class="headerlink" href="#Harrison" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/zreferences.html#harrison2000">Harrison et al.,
+<p><a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/zreferences.html#harrison2000">Harrison et al.,
 2000</a>
 suggested to simply cap PIA in case it would cause a correction of
 rainfall intensity by more than a factor of two. Depending on the
@@ -560,14 +560,14 @@ between 4 and 5 dB (4.8 dB if we assume exponent b=1.6).</p>
 </div>
 <div class="section" id="Kraemer">
 <h3>Kraemer<a class="headerlink" href="#Kraemer" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/zreferences.html#kraemer2008">Kraemer et al.,
+<p><a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/zreferences.html#kraemer2008">Kraemer et al.,
 2008</a>
 suggested to iteratively determine the power law parameters of the A(Z).
 In particular, the power law coefficient is interatively decreased until
 the attenuation correction does not lead to reflectivity values above a
 given threshold (Kraemer suggested 59 dBZ). Using <span class="math">\(\omega radlib\)</span>,
 this would be called by using the function
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.atten.correctAttenuationConstrained2.html">wradlib.atten.correctAttenuationConstrained2()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.atten.correctAttenuationConstrained2.html">wradlib.atten.correctAttenuationConstrained2()</a>
 with a specific <code class="docutils literal"><span class="pre">constraints</span></code> argument:</p>
 <div class="nbinput nblast container">
 <div class="highlight-none"><div class="highlight"><pre>
@@ -618,11 +618,11 @@ like this:</p>
 <div class="section" id="Modified-Kraemer">
 <h3>Modified Kraemer<a class="headerlink" href="#Modified-Kraemer" title="Permalink to this headline">¶</a></h3>
 <p>The function
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.atten.correctAttenuationConstrained2.html">wradlib.atten.correctAttenuationConstrained2()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.atten.correctAttenuationConstrained2.html">wradlib.atten.correctAttenuationConstrained2()</a>
 allows us to pass any kind of constraint function or lists of constraint
 functions via the argument <code class="docutils literal"><span class="pre">constraints</span></code>. The arguments of these
 functions are passed via a nested list as argument <code class="docutils literal"><span class="pre">constraint_args</span></code>.
-For example, <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/zreferences.html#jacobi2015">Jacobi et al.,
+For example, <a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/zreferences.html#jacobi2015">Jacobi et al.,
 2015</a>
 suggested to constrain <em>both</em> the corrected reflectivity (by a maximum
 of 59 dBZ) <em>and</em> the resulting path-intgrated attenuation PIA (by a
@@ -674,7 +674,7 @@ maximum of 20 dB):</p>
 <p>Plotting all of the above methods (<a class="reference external" href="#Hitschfeld-and-Bordan">Hitschfeld and
 Bordan</a>, <a class="reference external" href="#Harrison">Harrison</a>,
 <a class="reference external" href="#Kraemer">Kraemer</a>, <a class="reference external" href="#Modified-Kraemer">Modified Kraemer</a> allows
-for a better comparison of their behaviour. Please refer to <a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/zreferences.html#jacobi2015">Jacobi et
+for a better comparison of their behaviour. Please refer to <a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/zreferences.html#jacobi2015">Jacobi et
 al.,
 2015</a>
 for an in-depth discussion of this example.</p>

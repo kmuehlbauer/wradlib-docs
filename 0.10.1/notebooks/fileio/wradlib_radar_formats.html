@@ -430,7 +430,7 @@ hdf5.</p>
 <p>In the following, we will provide an overview of file formats which can
 be currently read by <span class="math">\(\omega radlib\)</span>.</p>
 <p>Reading weather radar files is done via the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/io.html">wradlib.io</a> module.
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/io.html">wradlib.io</a> module.
 There you will find a complete function reference.</p>
 <div class="section" id="German-Weather-Service:-DX-format">
 <h2>German Weather Service: DX format<a class="headerlink" href="#German-Weather-Service:-DX-format" title="Permalink to this headline">¶</a></h2>
@@ -907,18 +907,18 @@ program might need to know about.</p>
 <p><span class="math">\(\omega radlib\)</span> provides two solutions to address this challenge.
 The first one ignores the concept of data models and just pulls all data
 and metadata from a NetCDF file
-(<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>.
+(<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>.
 The second is designed for a specific data model used by the EDGE
 software
-(<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_EDGE_netcdf.html">wradlib.io.read_EDGE_netcdf()</a>).</p>
+(<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.io.read_EDGE_netcdf.html">wradlib.io.read_EDGE_netcdf()</a>).</p>
 <div class="section" id="Generic-NetCDF-reader-(includes-CfRadial)">
 <h3>Generic NetCDF reader (includes CfRadial)<a class="headerlink" href="#Generic-NetCDF-reader-(includes-CfRadial)" title="Permalink to this headline">¶</a></h3>
 <p><span class="math">\(\omega radlib\)</span> provides a function that will virtually read any
 NetCDF file irrespective of the data model:
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>.
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>.
 It is built upon Python’s
 <a class="reference external" href="https://unidata.github.io/netcdf4-python/">netcdf4</a> library.
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>
 will return only one object, a dictionary, that contains all the
 contents of the NetCDF file corresponding to the original file
 structure. This includes all the metadata, as well as the so called
@@ -927,12 +927,12 @@ the “variables” which will contains the actual data. Users can use this
 dictionary at will in order to query data and metadata; however, they
 should make sure to consider the documentation of the corresponding data
 model.
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>
 has been shown to work with a lot of different data models, most notably
 <strong>CfRadial</strong> (see
 <a class="reference external" href="http://www.ral.ucar.edu/projects/titan/docs/radial_formats/cfradial.html">here</a>
 for details). A typical call to
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>
 would look like:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
@@ -975,9 +975,9 @@ notebook</span></a> to get started.</p>
 <p>EDGE is a commercial software for radar control and data analysis
 provided by the Enterprise Electronics Corporation. It allows for netCDF
 data export. The resulting files can be read by
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>,
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.io.read_generic_netcdf.html">wradlib.io.read_generic_netcdf()</a>,
 but <span class="math">\(\omega radlib\)</span> also provides a specific function,
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_EDGE_netcdf.html">wradlib.io.read_EDGE_netcdf()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.10.1/generated/wradlib.io.read_EDGE_netcdf.html">wradlib.io.read_EDGE_netcdf()</a>
 to return metadata and data as seperate objects:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>

@@ -395,9 +395,9 @@ we use pre-processed data from the
 </div>
 </div>
 <p>We use the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.sweep_centroids.html">wradlib.georef.sweep_centroids()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.georef.sweep_centroids.html">wradlib.georef.sweep_centroids()</a>
 and
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.georef.polar2lonlatalt_n.html">wradlib.georef.polar2lonlatalt_n()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.georef.polar2lonlatalt_n.html">wradlib.georef.polar2lonlatalt_n()</a>
 functions to calculate the radar bin centroids and derive lon, lat, alt
 from that. Also the bounding box is computed.</p>
 <div class="nbinput container">
@@ -440,7 +440,7 @@ rastervalues to the polar grid points. You can choose the coarser
 resolution <code class="docutils literal"><span class="pre">bonn_gtopo.tif</span></code> from GTOPO30 or the finer resolution
 <code class="docutils literal"><span class="pre">bonn_new.tif</span></code> from the SRTM mission.</p>
 <p>For reading the raster data the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.io.read_raster_data.html">wradlib.io.read_raster_data()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.io.read_raster_data.html">wradlib.io.read_raster_data()</a>
 function is used.</p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
@@ -481,7 +481,7 @@ function is used.</p>
 <div class="section" id="Calculate-Beam-Blockage">
 <h2>Calculate Beam-Blockage<a class="headerlink" href="#Calculate-Beam-Blockage" title="Permalink to this headline">¶</a></h2>
 <p>This is all we need to execute the
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.qual.beam_block_frac.html">wradlib.qual.beam_block_frac()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.qual.beam_block_frac.html">wradlib.qual.beam_block_frac()</a>
 function to calculate the PBB. The return needs to be masked correctly.</p>
 <div class="nbinput container">
 <div class="highlight-none"><div class="highlight"><pre>
@@ -504,7 +504,7 @@ function to calculate the PBB. The return needs to be masked correctly.</p>
 </pre></div></div>
 </div>
 <p>Since
-<a class="reference external" href="http://wradlib.org/wradlib-docs/$TAG/generated/wradlib.qual.beam_block_frac.html">wradlib.qual.beam_block_frac()</a>
+<a class="reference external" href="http://wradlib.org/wradlib-docs/0.9.0/generated/wradlib.qual.beam_block_frac.html">wradlib.qual.beam_block_frac()</a>
 calculates fraction of beam blockage for every grid-cell without taking
 into account that the radar signal travels along a certain ray, we have
 to take care of this. We find the maximum blockage fraction index per
